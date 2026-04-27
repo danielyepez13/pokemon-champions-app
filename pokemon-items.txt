@@ -1,0 +1,381 @@
+<div align="center"><font size="4"><b><u>Hold Items</u></b></font></div><p>In the games, there are a variety of items that give your Pok�mon added perks if they have these items attached. Each item has different effects, some affecting the Pok�mon's status condition, some boosting stats and some powering up moves.</p><table class="dextable" align="center">
+	<tbody><tr>
+		<td width="32" class="fooevo">Picture</td>
+		<td class="fooevo">Name</td>
+		<td class="fooevo">Effect</td>
+		<td class="fooevo" width="50%">Location</td>
+	</tr>
+	<tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/blackbelt.shtml"><img src="./Pok�mon Champions - Items_files/blackbelt.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/blackbelt.shtml">Black Belt</a></td>
+<td class="fooinfo">An item to be held by a Pok�mon. This belt helps with focus and boosts the power of the holder's Fighting-type moves.</td><td class="fooinfo"><br><b>Shop</b><br>700 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/blackglasses.shtml"><img src="./Pok�mon Champions - Items_files/blackglasses.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/blackglasses.shtml">Black Glasses</a></td>
+<td class="fooinfo">An item to be held by a Pok�mon. It's a pair of shady- looking glasses that boost the power of the holder's Dark-type moves.</td><td class="fooinfo"><br><b>Shop</b><br>700 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/brightpowder.shtml"><img src="./Pok�mon Champions - Items_files/brightpowder.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/brightpowder.shtml">Bright Powder</a></td>
+<td class="fooinfo">An item to be held by a Pok�mon. This glittery powder casts a tricky glare that lowers the accuracy of opposing Pok�mon's moves.</td><td class="fooinfo">Beginning</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/charcoal.shtml"><img src="./Pok�mon Champions - Items_files/charcoal.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/charcoal.shtml">Charcoal</a></td>
+<td class="fooinfo">An item to be held by a Pok�mon. It's a combustible fuel that boosts the power of the holder's Fire-type moves.</td><td class="fooinfo"><br><b>Shop</b><br>700 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/choicescarf.shtml"><img src="./Pok�mon Champions - Items_files/choicescarf.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/choicescarf.shtml">Choice Scarf</a></td>
+<td class="fooinfo">An item to be held by a Pok�mon. This curious scarf boosts the holder's Speed stat but only allows the use of a single move.</td><td class="fooinfo">Beginning</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/dragonfang.shtml"><img src="./Pok�mon Champions - Items_files/dragonfang.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/dragonfang.shtml">Dragon Fang</a></td>
+<td class="fooinfo">An item to be held by a Pok�mon. This hard, sharp fang boosts the power of the holder's Dragon-type moves.</td><td class="fooinfo"><br><b>Shop</b><br>700 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/fairyfeather.shtml"><img src="./Pok�mon Champions - Items_files/fairyfeather.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/fairyfeather.shtml">Fairy Feather</a></td>
+<td class="fooinfo">An item to be held by a Pok�mon. This feather, which gleams faintly when hit by light, boosts the power of the holder's Fairy-type moves.</td><td class="fooinfo"><br><b>Shop</b><br>700 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/focusband.shtml"><img src="./Pok�mon Champions - Items_files/focusband.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/focusband.shtml">Focus Band</a></td>
+<td class="fooinfo">An item to be held by a Pok�mon. When the holder is hit with a move that should knock it out, it may be able to endure with 1 HP.</td><td class="fooinfo">Beginning</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/focussash.shtml"><img src="./Pok�mon Champions - Items_files/focussash.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/focussash.shtml">Focus Sash</a></td>
+<td class="fooinfo">An item to be held by a Pok�mon. If the holder has full HP and it is hit with a move that should knock it out, it will endure with 1 HP�but only once.</td><td class="fooinfo">Beginning</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/hardstone.shtml"><img src="./Pok�mon Champions - Items_files/hardstone.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/hardstone.shtml">Hard Stone</a></td>
+<td class="fooinfo">An item to be held by a Pok�mon. It's a durable stone that boosts the power of the holder's Rock-type moves.</td><td class="fooinfo"><br><b>Shop</b><br>700 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/king&#39;srock.shtml"><img src="./Pok�mon Champions - Items_files/king&#39;srock.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/kingsrock.shtml">King's Rock</a></td>
+<td class="fooinfo">An item to be held by a Pok�mon. It may cause the target to flinch whenever the holder successfully inflicts damage on them with an attack.</td><td class="fooinfo">Beginning</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/leftovers.shtml"><img src="./Pok�mon Champions - Items_files/leftovers.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/leftovers.shtml">Leftovers</a></td>
+<td class="fooinfo">An item to be held by a Pok�mon. It slowly but steadily restores the holder's HP.</td><td class="fooinfo">Beginning</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/lightball.shtml"><img src="./Pok�mon Champions - Items_files/lightball.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/lightball.shtml">Light Ball</a></td>
+<td class="fooinfo">An item to be held by Pikachu. It's a mysterious orb that boosts Pikachu's Attack and Sp. Atk stats.</td><td class="fooinfo"><br><b>Shop</b><br>1000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/magnet.shtml"><img src="./Pok�mon Champions - Items_files/magnet.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/magnet.shtml">Magnet</a></td>
+<td class="fooinfo">An item to be held by a Pok�mon. It's a powerful magnet that boosts the power of the holder's Electric-type moves.</td><td class="fooinfo"><br><b>Shop</b><br>700 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/mentalherb.shtml"><img src="./Pok�mon Champions - Items_files/mentalherb.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/mentalherb.shtml">Mental Herb</a></td>
+<td class="fooinfo">An item to be held by a Pok�mon. The holder will be able to shake off move-binding effects to move freely� but only once.</td><td class="fooinfo"><br><b>Shop</b><br>1000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/metalcoat.shtml"><img src="./Pok�mon Champions - Items_files/metalcoat.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/metalcoat.shtml">Metal Coat</a></td>
+<td class="fooinfo">An item to be held by a Pok�mon. It's a special metallic coating that boosts the power of the holder's Steel-type moves.</td><td class="fooinfo"><br><b>Shop</b><br>700 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/miracleseed.shtml"><img src="./Pok�mon Champions - Items_files/miracleseed.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/miracleseed.shtml">Miracle Seed</a></td>
+<td class="fooinfo">An item to be held by a Pok�mon. It's a seed imbued with life force that boosts the power of the holder's Grass-type moves.</td><td class="fooinfo"><br><b>Shop</b><br>700 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/mysticwater.shtml"><img src="./Pok�mon Champions - Items_files/mysticwater.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/mysticwater.shtml">Mystic Water</a></td>
+<td class="fooinfo">An item to be held by a Pok�mon. This teardrop-shaped gem boosts the power of the holder's Water-type moves.</td><td class="fooinfo"><br><b>Shop</b><br>700 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/never-meltice.shtml"><img src="./Pok�mon Champions - Items_files/never-meltice.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/never-meltice.shtml">Never-Melt Ice</a></td>
+<td class="fooinfo">An item to be held by a Pok�mon. It's a heat-repelling piece of ice that boosts the power of the holder's Ice- type moves.</td><td class="fooinfo"><br><b>Shop</b><br>700 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/poisonbarb.shtml"><img src="./Pok�mon Champions - Items_files/poisonbarb.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/poisonbarb.shtml">Poison Barb</a></td>
+<td class="fooinfo">An item to be held by a Pok�mon. This small poisonous barb boosts the power of the holder's Poison-type moves.</td><td class="fooinfo"><br><b>Shop</b><br>700 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/quickclaw.shtml"><img src="./Pok�mon Champions - Items_files/quickclaw.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/quickclaw.shtml">Quick Claw</a></td>
+<td class="fooinfo">An item to be held by a Pok�mon. This light, sharp claw lets the holder occasionally unleash a move faster than it usually would.</td><td class="fooinfo">Beginning</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/scopelens.shtml"><img src="./Pok�mon Champions - Items_files/scopelens.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/scopelens.shtml">Scope Lens</a></td>
+<td class="fooinfo">An item to be held by a Pok�mon. It's a lens for scoping out weak points. It boosts the holder's critical-hit ratio.</td><td class="fooinfo"><br><b>Shop</b><br>1000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/sharpbeak.shtml"><img src="./Pok�mon Champions - Items_files/sharpbeak.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/sharpbeak.shtml">Sharp Beak</a></td>
+<td class="fooinfo">An item to be held by a Pok�mon. It's a long, sharp beak that boosts the power of the holder's Flying-type moves.</td><td class="fooinfo"><br><b>Shop</b><br>700 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/shellbell.shtml"><img src="./Pok�mon Champions - Items_files/shellbell.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/shellbell.shtml">Shell Bell</a></td>
+<td class="fooinfo">An item to be held by a Pok�mon. The holder restores a little HP to itself every time it inflicts damage with an attack.</td><td class="fooinfo"><br><b>Shop</b><br>700 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/silkscarf.shtml"><img src="./Pok�mon Champions - Items_files/silkscarf.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/silkscarf.shtml">Silk Scarf</a></td>
+<td class="fooinfo">An item to be held by a Pok�mon. It's a sumptuous scarf that boosts the power of the holder's Normal-type moves.</td><td class="fooinfo"><br><b>Shop</b><br>700 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/silverpowder.shtml"><img src="./Pok�mon Champions - Items_files/silverpowder.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/silverpowder.shtml">Silver Powder</a></td>
+<td class="fooinfo">An item to be held by a Pok�mon. It's a shiny silver powder that boosts the power of the holder's Bug-type moves.</td><td class="fooinfo"><br><b>Shop</b><br>700 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/softsand.shtml"><img src="./Pok�mon Champions - Items_files/softsand.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/softsand.shtml">Soft Sand</a></td>
+<td class="fooinfo">An item to be held by a Pok�mon. This loose, silky sand boosts the power of the holder's Ground-type moves.</td><td class="fooinfo"><br><b>Shop</b><br>700 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/spelltag.shtml"><img src="./Pok�mon Champions - Items_files/spelltag.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/spelltag.shtml">Spell Tag</a></td>
+<td class="fooinfo">An item to be held by a Pok�mon. It's a sinister, eerie tag that boosts the power of the holder's Ghost-type moves.</td><td class="fooinfo"><br><b>Shop</b><br>700 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/twistedspoon.shtml"><img src="./Pok�mon Champions - Items_files/twistedspoon.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/twistedspoon.shtml">Twisted Spoon</a></td>
+<td class="fooinfo">An item to be held by a Pok�mon. This spoon is imbued with telekinetic energy and boosts the power of the holder's Psychic-type moves.</td><td class="fooinfo"><br><b>Shop</b><br>700 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/whiteherb.shtml"><img src="./Pok�mon Champions - Items_files/whiteherb.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/whiteherb.shtml">White Herb</a></td>
+<td class="fooinfo">An item to be held by a Pok�mon. It will restore any lowered stat in battle�but only once.</td><td class="fooinfo">Beginning</td></tr></tbody></table>
+
+
+
+<div align="center"><font size="4"><b><u>Mega Stone</u></b></font></div><p>The Mega Stones are a new form of evolutionary item introduced in X &amp; Y. These items, when hold, activate Mega Evolution for their specific Pok�mon, allowing them to evolve into far stronger forms for the duration of battle.</p><table class="dextable" align="center">
+	<tbody><tr>
+		<td width="32" class="fooevo">Picture</td>
+		<td class="fooevo">Name</td>
+		<td class="fooevo">Effect</td>
+		<td class="fooevo" width="50%">Location</td>
+	</tr>
+	<tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/abomasite.shtml"><img src="./Pok�mon Champions - Items_files/abomasite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/abomasite.shtml">Abomasite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. An Abomasnow holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo">Mega Evolution Tutorial</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/absolite.shtml"><img src="./Pok�mon Champions - Items_files/absolite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/absolite.shtml">Absolite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. An Absol holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/aerodactylite.shtml"><img src="./Pok�mon Champions - Items_files/aerodactylite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/aerodactylite.shtml">Aerodactylite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. An Aerodactyl holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/aggronite.shtml"><img src="./Pok�mon Champions - Items_files/aggronite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/aggronite.shtml">Aggronite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. An Aggron holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo">Mega Evolution Tutorial</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/alakazite.shtml"><img src="./Pok�mon Champions - Items_files/alakazite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/alakazite.shtml">Alakazite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. An Alakazam holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/altarianite.shtml"><img src="./Pok�mon Champions - Items_files/altarianite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/altarianite.shtml">Altarianite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. An Altaria holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/ampharosite.shtml"><img src="./Pok�mon Champions - Items_files/ampharosite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/ampharosite.shtml">Ampharosite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. An Ampharos holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/audinite.shtml"><img src="./Pok�mon Champions - Items_files/audinite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/audinite.shtml">Audinite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. An Audino holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/banettite.shtml"><img src="./Pok�mon Champions - Items_files/banettite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/banettite.shtml">Banettite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Banette holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/beedrillite.shtml"><img src="./Pok�mon Champions - Items_files/beedrillite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/beedrillite.shtml">Beedrillite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Beedrill holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo">Mega Evolution Tutorial</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/blastoisinite.shtml"><img src="./Pok�mon Champions - Items_files/blastoisinite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/blastoisinite.shtml">Blastoisinite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Blastoise holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/cameruptite.shtml"><img src="./Pok�mon Champions - Items_files/cameruptite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/cameruptite.shtml">Cameruptite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Camerupt holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/chandelurite.shtml"><img src="./Pok�mon Champions - Items_files/chandelurite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/chandelurite.shtml">Chandelurite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Chandelure holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/charizarditex.shtml"><img src="./Pok�mon Champions - Items_files/charizarditex.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/charizarditex.shtml">Charizardite X</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Charizard holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/charizarditey.shtml"><img src="./Pok�mon Champions - Items_files/charizarditey.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/charizarditey.shtml">Charizardite Y</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Charizard holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/chesnaughtite.shtml"><img src="./Pok�mon Champions - Items_files/chesnaughtite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/chesnaughtite.shtml">Chesnaughtite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Chesnaught holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br>Deposit a Chesnaught from Pok�mon Legends: Z-A</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/chimechite.shtml"><img src="./Pok�mon Champions - Items_files/chimechite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/chimechite.shtml">Chimechite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Chimecho holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/clefablite.shtml"><img src="./Pok�mon Champions - Items_files/clefablite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/clefablite.shtml">Clefablite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Clefable holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/crabominite.shtml"><img src="./Pok�mon Champions - Items_files/crabominite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/crabominite.shtml">Crabominite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Crabominable holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/delphoxite.shtml"><img src="./Pok�mon Champions - Items_files/delphoxite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/delphoxite.shtml">Delphoxite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Delphox holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br>Deposit a Delphox from Pok�mon Legends: Z-A</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/dragoninite.shtml"><img src="./Pok�mon Champions - Items_files/dragoninite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/dragoninite.shtml">Dragoninite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Dragonite holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/drampanite.shtml"><img src="./Pok�mon Champions - Items_files/drampanite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/drampanite.shtml">Drampanite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Drampa holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/emboarite.shtml"><img src="./Pok�mon Champions - Items_files/emboarite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/emboarite.shtml">Emboarite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. An Emboar holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/excadrite.shtml"><img src="./Pok�mon Champions - Items_files/excadrite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/excadrite.shtml">Excadrite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. An Excadrill holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/feraligite.shtml"><img src="./Pok�mon Champions - Items_files/feraligite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/feraligite.shtml">Feraligite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Feraligatr holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/floettite.shtml"><img src="./Pok�mon Champions - Items_files/floettite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/floettite.shtml">Floettite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A special Floette holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br>Deposit a Floette Eternal Flower from Pok�mon Legends: Z-A</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/froslassite.shtml"><img src="./Pok�mon Champions - Items_files/froslassite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/froslassite.shtml">Froslassite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Froslass holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/galladite.shtml"><img src="./Pok�mon Champions - Items_files/galladite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/galladite.shtml">Galladite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Gallade holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/garchompite.shtml"><img src="./Pok�mon Champions - Items_files/garchompite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/garchompite.shtml">Garchompite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Garchomp holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo">Mega Evolution Tutorial</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/gardevoirite.shtml"><img src="./Pok�mon Champions - Items_files/gardevoirite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/gardevoirite.shtml">Gardevoirite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Gardevoir holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/gengarite.shtml"><img src="./Pok�mon Champions - Items_files/gengarite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/gengarite.shtml">Gengarite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Gengar holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/glalitite.shtml"><img src="./Pok�mon Champions - Items_files/glalitite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/glalitite.shtml">Glalitite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Glalie holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/glimmoranite.shtml"><img src="./Pok�mon Champions - Items_files/glimmoranite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/glimmoranite.shtml">Glimmoranite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Glimmora holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/golurkite.shtml"><img src="./Pok�mon Champions - Items_files/golurkite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/golurkite.shtml">Golurkite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Golurk holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/greninjite.shtml"><img src="./Pok�mon Champions - Items_files/greninjite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/greninjite.shtml">Greninjite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Greninja holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br>Deposit a Greninja from Pok�mon Legends: Z-A</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/gyaradosite.shtml"><img src="./Pok�mon Champions - Items_files/gyaradosite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/gyaradosite.shtml">Gyaradosite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Gyarados holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo">Mega Evolution Tutorial</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/hawluchanite.shtml"><img src="./Pok�mon Champions - Items_files/hawluchanite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/hawluchanite.shtml">Hawluchanite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Hawlucha holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/heracronite.shtml"><img src="./Pok�mon Champions - Items_files/heracronite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/heracronite.shtml">Heracronite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Heracross holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo">Mega Evolution Tutorial</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/houndoominite.shtml"><img src="./Pok�mon Champions - Items_files/houndoominite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/houndoominite.shtml">Houndoominite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Houndoom holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/kangaskhanite.shtml"><img src="./Pok�mon Champions - Items_files/kangaskhanite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/kangaskhanite.shtml">Kangaskhanite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Kangaskhan holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/lopunnite.shtml"><img src="./Pok�mon Champions - Items_files/lopunnite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/lopunnite.shtml">Lopunnite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Lopunny holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/lucarionite.shtml"><img src="./Pok�mon Champions - Items_files/lucarionite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/lucarionite.shtml">Lucarionite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Lucario holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/manectite.shtml"><img src="./Pok�mon Champions - Items_files/manectite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/manectite.shtml">Manectite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Manectric holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo">Mega Evolution Tutorial</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/medichamite.shtml"><img src="./Pok�mon Champions - Items_files/medichamite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/medichamite.shtml">Medichamite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Medicham holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/meganiumite.shtml"><img src="./Pok�mon Champions - Items_files/meganiumite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/meganiumite.shtml">Meganiumite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Meganium holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/meowsticite.shtml"><img src="./Pok�mon Champions - Items_files/meowsticite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/meowsticite.shtml">Meowsticite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Meowstic holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/pidgeotite.shtml"><img src="./Pok�mon Champions - Items_files/pidgeotite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/pidgeotite.shtml">Pidgeotite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Pidgeot holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/pinsirite.shtml"><img src="./Pok�mon Champions - Items_files/pinsirite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/pinsirite.shtml">Pinsirite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Pinsir holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/sablenite.shtml"><img src="./Pok�mon Champions - Items_files/sablenite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/sablenite.shtml">Sablenite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Sableye holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/scizorite.shtml"><img src="./Pok�mon Champions - Items_files/scizorite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/scizorite.shtml">Scizorite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Scizor holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/scovillainite.shtml"><img src="./Pok�mon Champions - Items_files/scovillainite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/scovillainite.shtml">Scovillainite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Scovillain holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/sharpedonite.shtml"><img src="./Pok�mon Champions - Items_files/sharpedonite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/sharpedonite.shtml">Sharpedonite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Sharpedo holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/skarmorite.shtml"><img src="./Pok�mon Champions - Items_files/skarmorite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/skarmorite.shtml">Skarmorite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Skarmory holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/slowbronite.shtml"><img src="./Pok�mon Champions - Items_files/slowbronite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/slowbronite.shtml">Slowbronite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Slowbro holding this stone will be able to Mega Evolve during battle. It won't work for a Galarian Slowbro, however.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/starminite.shtml"><img src="./Pok�mon Champions - Items_files/starminite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/starminite.shtml">Starminite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Starmie holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/steelixite.shtml"><img src="./Pok�mon Champions - Items_files/steelixite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/steelixite.shtml">Steelixite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Steelix holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo">Mega Evolution Tutorial</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/tyranitarite.shtml"><img src="./Pok�mon Champions - Items_files/tyranitarite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/tyranitarite.shtml">Tyranitarite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Tyranitar holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/venusaurite.shtml"><img src="./Pok�mon Champions - Items_files/venusaurite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/venusaurite.shtml">Venusaurite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Venusaur holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/victreebelite.shtml"><img src="./Pok�mon Champions - Items_files/victreebelite.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/victreebelite.shtml">Victreebelite</a></td>
+<td class="fooinfo">One of a variety of mysterious Mega Stones. A Victreebel holding this stone will be able to Mega Evolve during battle.</td><td class="fooinfo"><br><b>Shop</b><br>2000 VP</td></tr></tbody></table>
+
+
+
+<div align="center"><font size="4"><b><u>Berries</u></b></font></div><p>Berries have a variety of uses. These berries can all be used and crushed in order to make other items, Pok�Blocks &amp; Poffin that are used to boost your Pok�mon's Contest statistics. In addition to that, some berries have in-battle effects such as healing Pok�mon and some even reduce the Effort Values your Pok�mon have gained. Berries can be given to your Pok�mon to be held and can be reproduced by growing them in loamy soil around the regions or in the Berry Pots item. All berries however are one-use so use them wisely.</p><table class="dextable" align="center">
+	<tbody><tr>
+		<td width="32" class="fooevo">Picture</td>
+		<td class="fooevo">Name</td>
+		<td class="fooevo">Effect</td>
+		<td class="fooevo" width="50%">Location</td>
+	</tr>
+	<tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/aspearberry.shtml"><img src="./Pok�mon Champions - Items_files/aspearberry.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/aspearberry.shtml">Aspear Berry</a></td>
+<td class="fooinfo">If a Pok�mon holds one of these Berries, it will be able to thaw itself after being frozen.</td><td class="fooinfo"><br><b>Shop</b><br>400 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/babiriberry.shtml"><img src="./Pok�mon Champions - Items_files/babiriberry.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/babiriberry.shtml">Babiri Berry</a></td>
+<td class="fooinfo">If a Pok�mon holding this Berry is hit with a supereffective Steel-type move, the power of that move will be weakened.</td><td class="fooinfo"><br><b>Shop</b><br>400 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/chartiberry.shtml"><img src="./Pok�mon Champions - Items_files/chartiberry.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/chartiberry.shtml">Charti Berry</a></td>
+<td class="fooinfo">If a Pok�mon holding this Berry is hit with a supereffective Rock-type move, the power of that move will be weakened.</td><td class="fooinfo"><br><b>Shop</b><br>400 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/cheriberry.shtml"><img src="./Pok�mon Champions - Items_files/cheriberry.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/cheriberry.shtml">Cheri Berry</a></td>
+<td class="fooinfo">If a Pok�mon holds one of these Berries, it will be able to free itself from paralysis.</td><td class="fooinfo"><br><b>Shop</b><br>400 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/chestoberry.shtml"><img src="./Pok�mon Champions - Items_files/chestoberry.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/chestoberry.shtml">Chesto Berry</a></td>
+<td class="fooinfo">If a Pok�mon holds one of these Berries, it will be able to shake off its drowsiness.</td><td class="fooinfo"><br><b>Shop</b><br>400 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/chilanberry.shtml"><img src="./Pok�mon Champions - Items_files/chilanberry.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/chilanberry.shtml">Chilan Berry</a></td>
+<td class="fooinfo">If a Pok�mon holding this Berry is hit with a Normal-type move, the power of that move will be weakened.</td><td class="fooinfo"><br><b>Shop</b><br>400 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/chopleberry.shtml"><img src="./Pok�mon Champions - Items_files/chopleberry.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/chopleberry.shtml">Chople Berry</a></td>
+<td class="fooinfo">If a Pok�mon holding this Berry is hit with a supereffective Fighting-type move, the power of that move will be weakened.</td><td class="fooinfo"><br><b>Shop</b><br>400 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/cobaberry.shtml"><img src="./Pok�mon Champions - Items_files/cobaberry.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/cobaberry.shtml">Coba Berry</a></td>
+<td class="fooinfo">If a Pok�mon holding this Berry is hit with a supereffective Flying-type move, the power of that move will be weakened.</td><td class="fooinfo"><br><b>Shop</b><br>400 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/colburberry.shtml"><img src="./Pok�mon Champions - Items_files/colburberry.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/colburberry.shtml">Colbur Berry</a></td>
+<td class="fooinfo">If a Pok�mon holding this Berry is hit with a supereffective Dark-type move, the power of that move will be weakened.</td><td class="fooinfo"><br><b>Shop</b><br>400 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/habanberry.shtml"><img src="./Pok�mon Champions - Items_files/habanberry.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/habanberry.shtml">Haban Berry</a></td>
+<td class="fooinfo">If a Pok�mon holding this Berry is hit with a supereffective Dragon-type move, the power of that move will be weakened.</td><td class="fooinfo"><br><b>Shop</b><br>400 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/kasibberry.shtml"><img src="./Pok�mon Champions - Items_files/kasibberry.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/kasibberry.shtml">Kasib Berry</a></td>
+<td class="fooinfo">If a Pok�mon holding this Berry is hit with a supereffective Ghost-type move, the power of that move will be weakened.</td><td class="fooinfo"><br><b>Shop</b><br>400 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/kebiaberry.shtml"><img src="./Pok�mon Champions - Items_files/kebiaberry.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/kebiaberry.shtml">Kebia Berry</a></td>
+<td class="fooinfo">If a Pok�mon holding this Berry is hit with a supereffective Poison-type move, the power of that move will be weakened.</td><td class="fooinfo"><br><b>Shop</b><br>400 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/leppaberry.shtml"><img src="./Pok�mon Champions - Items_files/leppaberry.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/leppaberry.shtml">Leppa Berry</a></td>
+<td class="fooinfo">If a Pok�mon holds one of these Berries, it will be able to restore 10 PP to a move.</td><td class="fooinfo"><br><b>Shop</b><br>400 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/lumberry.shtml"><img src="./Pok�mon Champions - Items_files/lumberry.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/lumberry.shtml">Lum Berry</a></td>
+<td class="fooinfo">If a Pok�mon holds one of these Berries, it will be able to cure itself of any status condition it may have.</td><td class="fooinfo">Beginning</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/occaberry.shtml"><img src="./Pok�mon Champions - Items_files/occaberry.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/occaberry.shtml">Occa Berry</a></td>
+<td class="fooinfo">If a Pok�mon holding this Berry is hit with a supereffective Fire-type move, the power of that move will be weakened.</td><td class="fooinfo"><br><b>Shop</b><br>400 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/oranberry.shtml"><img src="./Pok�mon Champions - Items_files/oranberry.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/oranberry.shtml">Oran Berry</a></td>
+<td class="fooinfo">If a Pok�mon holds one of these Berries, it will be able to restore 10 HP to itself.</td><td class="fooinfo"><br><b>Shop</b><br>400 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/passhoberry.shtml"><img src="./Pok�mon Champions - Items_files/passhoberry.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/passhoberry.shtml">Passho Berry</a></td>
+<td class="fooinfo">If a Pok�mon holding this Berry is hit with a supereffective Water-type move, the power of that move will be weakened.</td><td class="fooinfo"><br><b>Shop</b><br>400 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/payapaberry.shtml"><img src="./Pok�mon Champions - Items_files/payapaberry.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/payapaberry.shtml">Payapa Berry</a></td>
+<td class="fooinfo">If a Pok�mon holding this Berry is hit with a supereffective Psychic-type move, the power of that move will be weakened.</td><td class="fooinfo"><br><b>Shop</b><br>400 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/pechaberry.shtml"><img src="./Pok�mon Champions - Items_files/pechaberry.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/pechaberry.shtml">Pecha Berry</a></td>
+<td class="fooinfo">If a Pok�mon holds one of these Berries, it will be able to lift the effects of being poisoned from itself.</td><td class="fooinfo"><br><b>Shop</b><br>400 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/persimberry.shtml"><img src="./Pok�mon Champions - Items_files/persimberry.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/persimberry.shtml">Persim Berry</a></td>
+<td class="fooinfo">If a Pok�mon holds one of these Berries, it will be able to cure itself of confusion.</td><td class="fooinfo"><br><b>Shop</b><br>400 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/rawstberry.shtml"><img src="./Pok�mon Champions - Items_files/rawstberry.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/rawstberry.shtml">Rawst Berry</a></td>
+<td class="fooinfo">If a Pok�mon holds one of these Berries, it will be able to cure itself of a burn.</td><td class="fooinfo"><br><b>Shop</b><br>400 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/rindoberry.shtml"><img src="./Pok�mon Champions - Items_files/rindoberry.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/rindoberry.shtml">Rindo Berry</a></td>
+<td class="fooinfo">If a Pok�mon holding this Berry is hit with a supereffective Grass-type move, the power of that move will be weakened.</td><td class="fooinfo"><br><b>Shop</b><br>400 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/roseliberry.shtml"><img src="./Pok�mon Champions - Items_files/roseliberry.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/roseliberry.shtml">Roseli Berry</a></td>
+<td class="fooinfo">If a Pok�mon holding this Berry is hit with a supereffective Fairy-type move, the power of that move will be weakened.</td><td class="fooinfo"><br><b>Shop</b><br>400 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/shucaberry.shtml"><img src="./Pok�mon Champions - Items_files/shucaberry.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/shucaberry.shtml">Shuca Berry</a></td>
+<td class="fooinfo">If a Pok�mon holding this Berry is hit with a supereffective Ground-type move, the power of that move will be weakened.</td><td class="fooinfo"><br><b>Shop</b><br>400 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/sitrusberry.shtml"><img src="./Pok�mon Champions - Items_files/sitrusberry.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/sitrusberry.shtml">Sitrus Berry</a></td>
+<td class="fooinfo">If a Pok�mon holds one of these Berries, it will be able to restore a small amount of HP to itself.</td><td class="fooinfo">Beginning</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/tangaberry.shtml"><img src="./Pok�mon Champions - Items_files/tangaberry.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/tangaberry.shtml">Tanga Berry</a></td>
+<td class="fooinfo">If a Pok�mon holding this Berry is hit with a supereffective Bug-type move, the power of that move will be weakened.</td><td class="fooinfo"><br><b>Shop</b><br>400 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/wacanberry.shtml"><img src="./Pok�mon Champions - Items_files/wacanberry.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/wacanberry.shtml">Wacan Berry</a></td>
+<td class="fooinfo">If a Pok�mon holding this Berry is hit with a supereffective Electric-type move, the power of that move will be weakened.</td><td class="fooinfo"><br><b>Shop</b><br>400 VP</td></tr><tr height="32">
+ <td class="cen"><a href="https://www.serebii.net/itemdex/yacheberry.shtml"><img src="./Pok�mon Champions - Items_files/yacheberry.png" class="pkmn" loading="lazy"></a></td>
+<td class="fooinfo"><a href="https://www.serebii.net/itemdex/yacheberry.shtml">Yache Berry</a></td>
+<td class="fooinfo">If a Pok�mon holding this Berry is hit with a supereffective Ice-type move, the power of that move will be weakened.</td><td class="fooinfo"><br><b>Shop</b><br>400 VP</td></tr></tbody></table>

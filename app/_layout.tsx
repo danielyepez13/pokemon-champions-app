@@ -6,6 +6,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
 
+import { initDatabase } from '@/src/database/database';
 import { useColorScheme } from '@/components/useColorScheme';
 
 export {
@@ -31,6 +32,10 @@ export default function RootLayout() {
   useEffect(() => {
     if (error) throw error;
   }, [error]);
+
+  useEffect(() => {
+    initDatabase().catch(console.error);
+  }, []);
 
   useEffect(() => {
     if (loaded) {
