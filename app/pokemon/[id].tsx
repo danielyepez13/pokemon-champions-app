@@ -23,7 +23,7 @@ export default function PokemonDetailScreen() {
   if (!pokemon) {
     return (
       <View style={styles.container}>
-        <Text style={styles.loadingText}>Invocando espíritu...</Text>
+        <Text style={styles.loadingText}>Loading information...</Text>
       </View>
     );
   }
@@ -34,12 +34,12 @@ export default function PokemonDetailScreen() {
 
   // Helper for Stats
   const statLabels: Record<keyof typeof pokemon.stats, string> = {
-    hp: 'PS',
-    attack: 'Ataque',
-    defense: 'Defensa',
-    spAttack: 'At. Especial',
-    spDefense: 'Def. Especial',
-    speed: 'Velocidad',
+    hp: 'HP',
+    attack: 'Attack',
+    defense: 'Defense',
+    spAttack: 'Sp. Atk',
+    spDefense: 'Sp. Def',
+    speed: 'Speed',
     total: 'Total'
   };
 
@@ -50,7 +50,7 @@ export default function PokemonDetailScreen() {
         {/* Back Button */}
         <Pressable onPress={() => router.back()} style={styles.backButton}>
           <FontAwesome name="chevron-left" size={16} color="#d4af37" />
-          <Text style={styles.backText}>Volver al Registro</Text>
+          <Text style={styles.backText}>Back to Registry</Text>
         </Pressable>
 
         {/* Outer Frame */}
@@ -74,7 +74,7 @@ export default function PokemonDetailScreen() {
 
             {/* Title Section */}
             <View style={styles.titleSection}>
-              <Text style={styles.dexLabel}>Especie #{dexString}</Text>
+              <Text style={styles.dexLabel}>Species #{dexString}</Text>
               <Text style={styles.pokemonName}>{pokemon.name}</Text>
               <View style={styles.typesRow}>
                 {pokemon.types.map(type => <TypeBadge key={type} type={type} />)}
@@ -85,14 +85,14 @@ export default function PokemonDetailScreen() {
             <View style={styles.descBox}>
               <FontAwesome name="info-circle" size={20} color="rgba(212, 175, 55, 0.6)" style={styles.descIcon} />
               <Text style={styles.descText}>
-                {pokemon.description || 'No hay descripción disponible para este Pokémon.'}
+                {pokemon.description || 'No description available for this Pokémon.'}
               </Text>
             </View>
 
             {/* Stats Section */}
             <View style={styles.statsSection}>
               <Text style={styles.sectionTitle}>
-                <FontAwesome name="bolt" size={14} color="#d4af37" /> Estadísticas
+                <FontAwesome name="bolt" size={14} color="#d4af37" /> Base Stats
               </Text>
               
               {Object.entries(pokemon.stats).filter(([key]) => key !== 'total').map(([key, value]) => (

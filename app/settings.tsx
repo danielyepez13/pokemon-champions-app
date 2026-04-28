@@ -19,12 +19,12 @@ export default function SettingsScreen() {
 
     const onComplete = () => {
       setSyncing(false);
-      Alert.alert('Éxito', 'Base de datos reiniciada y sincronizada correctamente.');
+      Alert.alert('Success', 'Database reset and synchronized correctly.');
     };
 
     const onError = (msg: string) => {
       setSyncing(false);
-      Alert.alert('Error', `Error durante la sincronización: ${msg}`);
+      Alert.alert('Error', `Error during synchronization: ${msg}`);
     };
 
     syncEvents.on('progress', onProgress);
@@ -40,12 +40,12 @@ export default function SettingsScreen() {
 
   const handleFullReset = () => {
     Alert.alert(
-      'Reinicio Total',
-      'Esta acción borrará toda la base de datos local y volverá a cargar todo desde cero. ¿Estás seguro?',
+      'Full Reset',
+      'This action will erase the entire local database and reload everything from scratch. Are you sure?',
       [
-        { text: 'Cancelar', style: 'cancel' },
+        { text: 'Cancel', style: 'cancel' },
         { 
-          text: 'Reiniciar y Sincronizar', 
+          text: 'Reset and Sync', 
           style: 'destructive',
           onPress: async () => {
             setSyncing(true);
@@ -58,11 +58,11 @@ export default function SettingsScreen() {
 
   return (
     <View style={styles.container}>
-      <Stack.Screen options={{ title: 'Configuración' }} />
+      <Stack.Screen options={{ title: 'Settings' }} />
       
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Datos y Almacenamiento</Text>
+          <Text style={styles.sectionTitle}>Data & Storage</Text>
           
           <Pressable 
             style={({ pressed }) => [styles.option, pressed && styles.optionPressed]} 
@@ -72,9 +72,9 @@ export default function SettingsScreen() {
               <FontAwesome name="trash" size={20} color="#ef4444" />
             </View>
             <View style={styles.optionContent}>
-              <Text style={styles.optionTitle}>Borrar y Sincronizar Todo</Text>
+              <Text style={styles.optionTitle}>Clear & Sync Everything</Text>
               <Text style={styles.optionDescription}>
-                Elimina la base de datos actual y descarga todo de nuevo (Pokémon y Objetos).
+                Deletes the current database and downloads everything again (Pokemon and Items).
               </Text>
             </View>
             <FontAwesome name="chevron-right" size={14} color="#9ca3af" />
@@ -82,21 +82,21 @@ export default function SettingsScreen() {
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Acerca de</Text>
+          <Text style={styles.sectionTitle}>About</Text>
           <View style={styles.infoRow}>
-            <Text style={styles.infoLabel}>Versión</Text>
+            <Text style={styles.infoLabel}>Version</Text>
             <Text style={styles.infoValue}>1.0.0</Text>
           </View>
           <View style={styles.infoRow}>
-            <Text style={styles.infoLabel}>Desarrollado para</Text>
-            <Text style={styles.infoValue}>Pokémon Champions Dex</Text>
+            <Text style={styles.infoLabel}>Developed for</Text>
+            <Text style={styles.infoValue}>Pokemon Champions Dex</Text>
           </View>
         </View>
 
         <View style={styles.noteBox}>
           <FontAwesome name="info-circle" size={16} color="#6b7280" style={{ marginRight: 8 }} />
           <Text style={styles.noteText}>
-            Nota: Las imágenes locales deben estar en la carpeta 'assets' para que sean visibles en la aplicación.
+            Note: Local images must be in the 'assets' folder to be visible in the application.
           </Text>
         </View>
       </ScrollView>
@@ -104,16 +104,16 @@ export default function SettingsScreen() {
       <Modal visible={syncing} transparent animationType="fade">
         <View style={styles.modalOverlay}>
           <View style={styles.modalContent}>
-            <ActivityIndicator size="large" color={Colors[colorScheme ?? 'light'].tint} />
+            <ActivityIndicator size="large" color="#d4af37" />
             <Text style={styles.syncTitle}>
-              {syncProgress.phase === 'items' ? 'Sincronizando Objetos...' : 'Sincronizando Pokémon...'}
+              {syncProgress.phase === 'items' ? 'Synchronizing Items...' : 'Synchronizing Pokemon...'}
             </Text>
             {syncProgress.total > 0 && (
               <Text style={styles.syncSubtitle}>
-                {syncProgress.phase === 'items' ? 'Procesando objeto:' : 'Procesando Pokémon:'} {syncProgress.current} / {syncProgress.total}
+                {syncProgress.phase === 'items' ? 'Processing item:' : 'Processing Pokemon:'} {syncProgress.current} / {syncProgress.total}
               </Text>
             )}
-            <Text style={styles.syncWaitText}>Borrando base de datos y reconstruyendo...</Text>
+            <Text style={styles.syncWaitText}>Deleting database and rebuilding...</Text>
           </View>
         </View>
       </Modal>
@@ -124,118 +124,144 @@ export default function SettingsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f3f4f6',
+    backgroundColor: '#050505',
   },
   scrollContent: {
     padding: 16,
   },
   section: {
-    backgroundColor: '#fff',
-    borderRadius: 12,
-    padding: 16,
+    backgroundColor: '#0a0a0a',
+    borderRadius: 8,
+    padding: 20,
     marginBottom: 20,
+    borderWidth: 1,
+    borderColor: 'rgba(212, 175, 55, 0.2)',
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05,
-    shadowRadius: 2,
-    elevation: 2,
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.5,
+    shadowRadius: 15,
+    elevation: 10,
+    position: 'relative',
+    overflow: 'hidden',
   },
   sectionTitle: {
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: 'bold',
-    color: '#6b7280',
+    color: '#d4af37',
     textTransform: 'uppercase',
-    letterSpacing: 1,
-    marginBottom: 16,
+    letterSpacing: 2,
+    marginBottom: 20,
+    opacity: 0.8,
+    backgroundColor: 'transparent',
   },
   option: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 12,
+    paddingVertical: 15,
   },
   optionPressed: {
-    opacity: 0.7,
+    opacity: 0.6,
   },
   optionIcon: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: '#fee2e2',
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    backgroundColor: 'rgba(239, 68, 68, 0.1)',
     justifyContent: 'center',
     alignItems: 'center',
-    marginRight: 12,
+    marginRight: 16,
+    borderWidth: 1,
+    borderColor: 'rgba(239, 68, 68, 0.2)',
   },
   optionContent: {
     flex: 1,
+    backgroundColor: 'transparent',
   },
   optionTitle: {
-    fontSize: 16,
+    fontSize: 17,
     fontWeight: '600',
-    color: '#1f2937',
+    color: '#fff',
   },
   optionDescription: {
-    fontSize: 12,
-    color: '#6b7280',
-    marginTop: 2,
+    fontSize: 13,
+    color: 'rgba(255, 255, 255, 0.5)',
+    marginTop: 4,
+    lineHeight: 18,
   },
   infoRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingVertical: 12,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: '#e5e7eb',
+    alignItems: 'center',
+    paddingVertical: 14,
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(255, 255, 255, 0.05)',
+    backgroundColor: 'transparent',
   },
   infoLabel: {
-    fontSize: 14,
-    color: '#4b5563',
+    fontSize: 15,
+    color: 'rgba(255, 255, 255, 0.6)',
   },
   infoValue: {
-    fontSize: 14,
-    fontWeight: '500',
-    color: '#1f2937',
+    fontSize: 15,
+    fontWeight: '600',
+    color: '#d4af37',
   },
   noteBox: {
     flexDirection: 'row',
-    padding: 16,
-    backgroundColor: '#e5e7eb',
-    borderRadius: 12,
+    padding: 20,
+    backgroundColor: 'rgba(212, 175, 55, 0.05)',
+    borderRadius: 8,
     alignItems: 'center',
+    borderWidth: 1,
+    borderColor: 'rgba(212, 175, 55, 0.1)',
+    marginTop: 10,
   },
   noteText: {
     flex: 1,
-    fontSize: 12,
-    color: '#4b5563',
-    lineHeight: 18,
+    fontSize: 13,
+    color: 'rgba(255, 255, 255, 0.4)',
+    lineHeight: 20,
+    fontStyle: 'italic',
   },
   modalOverlay: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    backgroundColor: 'rgba(0,0,0,0.9)',
     justifyContent: 'center',
     alignItems: 'center',
   },
   modalContent: {
-    backgroundColor: '#fff',
-    padding: 30,
-    borderRadius: 16,
+    backgroundColor: '#0a0a0a',
+    padding: 40,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: 'rgba(212, 175, 55, 0.3)',
     alignItems: 'center',
-    width: '80%',
+    width: '85%',
+    shadowColor: '#d4af37',
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.2,
+    shadowRadius: 20,
+    elevation: 10,
   },
   syncTitle: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: 'bold',
-    marginTop: 20,
-    color: '#1f2937',
+    marginTop: 25,
+    color: '#fff',
+    textAlign: 'center',
   },
   syncSubtitle: {
-    fontSize: 14,
-    marginTop: 10,
-    color: '#4b5563',
+    fontSize: 16,
+    marginTop: 12,
+    color: '#d4af37',
   },
   syncWaitText: {
-    fontSize: 12,
-    marginTop: 20,
-    color: '#9ca3af',
+    fontSize: 13,
+    marginTop: 25,
+    color: 'rgba(255, 255, 255, 0.4)',
     fontStyle: 'italic',
     textAlign: 'center',
+    lineHeight: 20,
   }
 });
+

@@ -29,15 +29,57 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Pokédex',
+          title: 'Pokedex',
           tabBarIcon: ({ color }) => <TabBarIcon name="search" color={color} />,
           headerRight: () => (
-            <Link href="/modal" asChild>
+            <Link href="/settings" asChild>
               <Pressable>
                 {({ pressed }) => (
                   <FontAwesome
-                    name="info-circle"
-                    size={25}
+                    name="cog"
+                    size={22}
+                    color={Colors[colorScheme ?? 'light'].text}
+                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+                  />
+                )}
+              </Pressable>
+            </Link>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="teams"
+        options={{
+          title: 'Teams',
+          tabBarIcon: ({ color }) => <TabBarIcon name="group" color={color} />,
+          headerRight: () => (
+            <Link href="/settings" asChild>
+              <Pressable>
+                {({ pressed }) => (
+                  <FontAwesome
+                    name="cog"
+                    size={22}
+                    color={Colors[colorScheme ?? 'light'].text}
+                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+                  />
+                )}
+              </Pressable>
+            </Link>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="battle"
+        options={{
+          title: 'Battle',
+          tabBarIcon: ({ color }) => <TabBarIcon name="bolt" color={color} />,
+          headerRight: () => (
+            <Link href="/settings" asChild>
+              <Pressable>
+                {({ pressed }) => (
+                  <FontAwesome
+                    name="cog"
+                    size={22}
                     color={Colors[colorScheme ?? 'light'].text}
                     style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
                   />

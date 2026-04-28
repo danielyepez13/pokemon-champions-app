@@ -144,6 +144,19 @@ export class PokemonDAO {
       category: row.category,
     };
   }
+
+  static async getByName(name: string): Promise<Pokemon | null> {
+    const db = await getDatabase();
+    const rows = await db.getAllAsync<any>(`
+      SELECT p.*, GROUP_CONCAT(t.type_name) as types_list
+      FROM pokemon p
+      LEFT JOIN pokemon_types t ON p.id = t.pokemon_id
+      WHERE LOWER(p.name) = LOWER(?)
+      GROUP BY p.id
+    `, [name]);
+
+    return rows.length > 0 ? this.mapRowToPokemon(rows[0]) : null;
+  }
 }
 
 export class ItemDAO {

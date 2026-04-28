@@ -56,7 +56,7 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon, onPress }) =>
 
         {/* Info Container */}
         <View style={styles.infoContainer}>
-          <Text style={styles.dexNumber}>Especie #{dexString}</Text>
+          <Text style={styles.dexNumber}>Species #{dexString}</Text>
           <Text style={styles.name}>{pokemon.name}</Text>
           
           <View style={styles.typesContainer}>

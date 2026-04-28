@@ -7,6 +7,8 @@ export const resetDatabase = async () => {
   console.log('[Database] Resetting database...');
   const database = await getDatabase();
   await database.execAsync('PRAGMA foreign_keys = OFF;');
+  // NOTE: Team tables are intentionally NOT dropped here.
+  // Teams are user data and must survive data resets.
   await database.execAsync('DROP TABLE IF EXISTS pokemon_types;');
   await database.execAsync('DROP TABLE IF EXISTS pokemon_abilities;');
   await database.execAsync('DROP TABLE IF EXISTS pokemon_moves;');
@@ -19,7 +21,7 @@ export const resetDatabase = async () => {
   await database.execAsync('DROP TABLE IF EXISTS sync_log;');
   await database.execAsync('DROP TABLE IF EXISTS sync_metadata;');
   await database.execAsync('PRAGMA foreign_keys = ON;');
-  console.log('[Database] Database dropped. Re-initializing...');
+  console.log('[Database] Pokemon data dropped. Team data preserved. Re-initializing...');
   await initDatabase();
 };
 
@@ -68,6 +70,22 @@ export const initDatabase = async () => {
     }
   } catch (e) {
     console.error('[Database] Migration error:', e);
+  }
+
+  // Migration for team_members: add team_order column
+  try {
+    const tmInfo = await database.getAllAsync<any>("PRAGMA table_info(team_members)");
+    if (tmInfo.length > 0) {
+      const hasTeamOrder = tmInfo.some((col: any) => col.name === 'team_order');
+      if (!hasTeamOrder) {
+        console.log('[Database] Migrating: Adding team_order column to team_members');
+        await database.execAsync('ALTER TABLE team_members ADD COLUMN team_order INTEGER DEFAULT 0;');
+        // Backfill: set team_order = slot for existing records
+        await database.execAsync('UPDATE team_members SET team_order = slot WHERE team_order = 0;');
+      }
+    }
+  } catch (e) {
+    console.error('[Database] Migration team_order error:', e);
   }
 
   // Create tables individually
@@ -153,6 +171,33 @@ export const initDatabase = async () => {
     `CREATE TABLE IF NOT EXISTS sync_metadata (
       key   TEXT PRIMARY KEY,
       value TEXT
+    );`,
+    `CREATE TABLE IF NOT EXISTS teams (
+      id          INTEGER PRIMARY KEY AUTOINCREMENT,
+      name        TEXT NOT NULL,
+      is_active   INTEGER DEFAULT 0,
+      created_at  TEXT DEFAULT (datetime('now'))
+    );`,
+    `CREATE TABLE IF NOT EXISTS team_members (
+      id               INTEGER PRIMARY KEY AUTOINCREMENT,
+      team_id          INTEGER NOT NULL REFERENCES teams(id) ON DELETE CASCADE,
+      pokemon_id       INTEGER NOT NULL REFERENCES pokemon(id),
+      item_id          INTEGER REFERENCES items(id),
+      ability_id       INTEGER REFERENCES abilities(id),
+      raw_item_name    TEXT,
+      raw_ability_name TEXT,
+      nature           TEXT,
+      evs              TEXT,
+      ivs              TEXT,
+      level            INTEGER DEFAULT 50,
+      slot             INTEGER NOT NULL,
+      team_order       INTEGER NOT NULL DEFAULT 0,
+      UNIQUE(team_id, slot)
+    );`,
+    `CREATE TABLE IF NOT EXISTS member_moves (
+      member_id   INTEGER NOT NULL REFERENCES team_members(id) ON DELETE CASCADE,
+      move_id     INTEGER NOT NULL REFERENCES moves(id),
+      PRIMARY KEY (member_id, move_id)
     );`
   ];
 

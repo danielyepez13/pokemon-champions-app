@@ -1,62 +1,62 @@
 export const CHAMPIONS_ITEMS_LIST = [
   {
     "name": "Black Belt",
-    "effect": "An item to be held by a Pok�mon. This belt helps with focus and boosts the power of the holder's Fighting-type moves.",
+    "effect": "An item to be held by a Pokémon. This belt helps with focus and boosts the power of the holder's Fighting-type moves.",
     "category": "Item"
   },
   {
     "name": "Black Glasses",
-    "effect": "An item to be held by a Pok�mon. It's a pair of shady- looking glasses that boost the power of the holder's Dark-type moves.",
+    "effect": "An item to be held by a Pokémon. It's a pair of shady- looking glasses that boost the power of the holder's Dark-type moves.",
     "category": "Item"
   },
   {
     "name": "Bright Powder",
-    "effect": "An item to be held by a Pok�mon. This glittery powder casts a tricky glare that lowers the accuracy of opposing Pok�mon's moves.",
+    "effect": "An item to be held by a Pokémon. This glittery powder casts a tricky glare that lowers the accuracy of opposing Pokémon's moves.",
     "category": "Item"
   },
   {
     "name": "Charcoal",
-    "effect": "An item to be held by a Pok�mon. It's a combustible fuel that boosts the power of the holder's Fire-type moves.",
+    "effect": "An item to be held by a Pokémon. It's a combustible fuel that boosts the power of the holder's Fire-type moves.",
     "category": "Item"
   },
   {
     "name": "Choice Scarf",
-    "effect": "An item to be held by a Pok�mon. This curious scarf boosts the holder's Speed stat but only allows the use of a single move.",
-    "category": "Item"
+    "effect": "An item to be held by a Pokémon. This curious scarf boosts the holder's Speed stat but only allows the use of a single move.",
+    "category": "Battle Item"
   },
   {
     "name": "Dragon Fang",
-    "effect": "An item to be held by a Pok�mon. This hard, sharp fang boosts the power of the holder's Dragon-type moves.",
+    "effect": "An item to be held by a Pokémon. This hard, sharp fang boosts the power of the holder's Dragon-type moves.",
     "category": "Item"
   },
   {
     "name": "Fairy Feather",
-    "effect": "An item to be held by a Pok�mon. This feather, which gleams faintly when hit by light, boosts the power of the holder's Fairy-type moves.",
+    "effect": "An item to be held by a Pokémon. This feather, which gleams faintly when hit by light, boosts the power of the holder's Fairy-type moves.",
     "category": "Item"
   },
   {
     "name": "Focus Band",
-    "effect": "An item to be held by a Pok�mon. When the holder is hit with a move that should knock it out, it may be able to endure with 1 HP.",
-    "category": "Item"
+    "effect": "An item to be held by a Pokémon. When the holder is hit with a move that should knock it out, it may be able to endure with 1 HP.",
+    "category": "Battle Item"
   },
   {
     "name": "Focus Sash",
-    "effect": "An item to be held by a Pok�mon. If the holder has full HP and it is hit with a move that should knock it out, it will endure with 1 HP�but only once.",
+    "effect": "An item to be held by a Pokémon. If the holder has full HP and it is hit with a move that should knock it out, it will endure with 1 HP — but only once.",
     "category": "Item"
   },
   {
     "name": "Hard Stone",
-    "effect": "An item to be held by a Pok�mon. It's a durable stone that boosts the power of the holder's Rock-type moves.",
+    "effect": "An item to be held by a Pokémon. It's a durable stone that boosts the power of the holder's Rock-type moves.",
     "category": "Item"
   },
   {
     "name": "King's Rock",
-    "effect": "An item to be held by a Pok�mon. It may cause the target to flinch whenever the holder successfully inflicts damage on them with an attack.",
+    "effect": "An item to be held by a Pokémon. It may cause the target to flinch whenever the holder successfully inflicts damage on them with an attack.",
     "category": "Item"
   },
   {
     "name": "Leftovers",
-    "effect": "An item to be held by a Pok�mon. It slowly but steadily restores the holder's HP.",
+    "effect": "An item to be held by a Pokémon. It slowly but steadily restores the holder's HP.",
     "category": "Item"
   },
   {
@@ -66,88 +66,88 @@ export const CHAMPIONS_ITEMS_LIST = [
   },
   {
     "name": "Magnet",
-    "effect": "An item to be held by a Pok�mon. It's a powerful magnet that boosts the power of the holder's Electric-type moves.",
+    "effect": "An item to be held by a Pokémon. It's a powerful magnet that boosts the power of the holder's Electric-type moves.",
     "category": "Item"
   },
   {
     "name": "Mental Herb",
-    "effect": "An item to be held by a Pok�mon. The holder will be able to shake off move-binding effects to move freely� but only once.",
+    "effect": "An item to be held by a Pokémon. The holder will be able to shake off move-binding effects to move freely — but only once.",
     "category": "Item"
   },
   {
     "name": "Metal Coat",
-    "effect": "An item to be held by a Pok�mon. It's a special metallic coating that boosts the power of the holder's Steel-type moves.",
+    "effect": "An item to be held by a Pokémon. It's a special metallic coating that boosts the power of the holder's Steel-type moves.",
     "category": "Item"
   },
   {
     "name": "Miracle Seed",
-    "effect": "An item to be held by a Pok�mon. It's a seed imbued with life force that boosts the power of the holder's Grass-type moves.",
+    "effect": "An item to be held by a Pokémon. It's a seed imbued with life force that boosts the power of the holder's Grass-type moves.",
     "category": "Item"
   },
   {
     "name": "Mystic Water",
-    "effect": "An item to be held by a Pok�mon. This teardrop-shaped gem boosts the power of the holder's Water-type moves.",
+    "effect": "An item to be held by a Pokémon. This teardrop-shaped gem boosts the power of the holder's Water-type moves.",
     "category": "Item"
   },
   {
     "name": "Never-Melt Ice",
-    "effect": "An item to be held by a Pok�mon. It's a heat-repelling piece of ice that boosts the power of the holder's Ice- type moves.",
+    "effect": "An item to be held by a Pokémon. It's a heat-repelling piece of ice that boosts the power of the holder's Ice- type moves.",
     "category": "Item"
   },
   {
     "name": "Poison Barb",
-    "effect": "An item to be held by a Pok�mon. This small poisonous barb boosts the power of the holder's Poison-type moves.",
+    "effect": "An item to be held by a Pokémon. This small poisonous barb boosts the power of the holder's Poison-type moves.",
     "category": "Item"
   },
   {
     "name": "Quick Claw",
-    "effect": "An item to be held by a Pok�mon. This light, sharp claw lets the holder occasionally unleash a move faster than it usually would.",
+    "effect": "An item to be held by a Pokémon. This light, sharp claw lets the holder occasionally unleash a move faster than it usually would.",
     "category": "Item"
   },
   {
     "name": "Scope Lens",
-    "effect": "An item to be held by a Pok�mon. It's a lens for scoping out weak points. It boosts the holder's critical-hit ratio.",
+    "effect": "An item to be held by a Pokémon. It's a lens for scoping out weak points. It boosts the holder's critical-hit ratio.",
     "category": "Item"
   },
   {
     "name": "Sharp Beak",
-    "effect": "An item to be held by a Pok�mon. It's a long, sharp beak that boosts the power of the holder's Flying-type moves.",
+    "effect": "An item to be held by a Pokémon. It's a long, sharp beak that boosts the power of the holder's Flying-type moves.",
     "category": "Item"
   },
   {
     "name": "Shell Bell",
-    "effect": "An item to be held by a Pok�mon. The holder restores a little HP to itself every time it inflicts damage with an attack.",
+    "effect": "An item to be held by a Pokémon. The holder restores a little HP to itself every time it inflicts damage with an attack.",
     "category": "Item"
   },
   {
     "name": "Silk Scarf",
-    "effect": "An item to be held by a Pok�mon. It's a sumptuous scarf that boosts the power of the holder's Normal-type moves.",
-    "category": "Item"
+    "effect": "An item to be held by a Pokémon. It's a sumptuous scarf that boosts the power of the holder's Normal-type moves.",
+    "category": "Battle Item"
   },
   {
     "name": "Silver Powder",
-    "effect": "An item to be held by a Pok�mon. It's a shiny silver powder that boosts the power of the holder's Bug-type moves.",
+    "effect": "An item to be held by a Pokémon. It's a shiny silver powder that boosts the power of the holder's Bug-type moves.",
     "category": "Item"
   },
   {
     "name": "Soft Sand",
-    "effect": "An item to be held by a Pok�mon. This loose, silky sand boosts the power of the holder's Ground-type moves.",
+    "effect": "An item to be held by a Pokémon. This loose, silky sand boosts the power of the holder's Ground-type moves.",
     "category": "Item"
   },
   {
     "name": "Spell Tag",
-    "effect": "An item to be held by a Pok�mon. It's a sinister, eerie tag that boosts the power of the holder's Ghost-type moves.",
+    "effect": "An item to be held by a Pokémon. It's a sinister, eerie tag that boosts the power of the holder's Ghost-type moves.",
     "category": "Item"
   },
   {
     "name": "Twisted Spoon",
-    "effect": "An item to be held by a Pok�mon. This spoon is imbued with telekinetic energy and boosts the power of the holder's Psychic-type moves.",
+    "effect": "An item to be held by a Pokémon. This spoon is imbued with telekinetic energy and boosts the power of the holder's Psychic-type moves.",
     "category": "Item"
   },
   {
     "name": "White Herb",
-    "effect": "An item to be held by a Pok�mon. It will restore any lowered stat in battle�but only once.",
-    "category": "Mega Stone"
+    "effect": "An item to be held by a Pokémon. It will restore any lowered stat in battle — but only once.",
+    "category": "Item"
   },
   {
     "name": "Abomasite",
@@ -446,142 +446,142 @@ export const CHAMPIONS_ITEMS_LIST = [
   },
   {
     "name": "Aspear Berry",
-    "effect": "If a Pok�mon holds one of these Berries, it will be able to thaw itself after being frozen.",
+    "effect": "If a Pokémon holds one of these Berries, it will be able to thaw itself after being frozen.",
     "category": "Berries"
   },
   {
     "name": "Babiri Berry",
-    "effect": "If a Pok�mon holding this Berry is hit with a supereffective Steel-type move, the power of that move will be weakened.",
+    "effect": "If a Pokémon holding this Berry is hit with a supereffective Steel-type move, the power of that move will be weakened.",
     "category": "Berries"
   },
   {
     "name": "Charti Berry",
-    "effect": "If a Pok�mon holding this Berry is hit with a supereffective Rock-type move, the power of that move will be weakened.",
+    "effect": "If a Pokémon holding this Berry is hit with a supereffective Rock-type move, the power of that move will be weakened.",
     "category": "Berries"
   },
   {
     "name": "Cheri Berry",
-    "effect": "If a Pok�mon holds one of these Berries, it will be able to free itself from paralysis.",
+    "effect": "If a Pokémon holds one of these Berries, it will be able to free itself from paralysis.",
     "category": "Berries"
   },
   {
     "name": "Chesto Berry",
-    "effect": "If a Pok�mon holds one of these Berries, it will be able to shake off its drowsiness.",
+    "effect": "If a Pokémon holds one of these Berries, it will be able to shake off its drowsiness.",
     "category": "Berries"
   },
   {
     "name": "Chilan Berry",
-    "effect": "If a Pok�mon holding this Berry is hit with a Normal-type move, the power of that move will be weakened.",
+    "effect": "If a Pokémon holding this Berry is hit with a Normal-type move, the power of that move will be weakened.",
     "category": "Berries"
   },
   {
     "name": "Chople Berry",
-    "effect": "If a Pok�mon holding this Berry is hit with a supereffective Fighting-type move, the power of that move will be weakened.",
+    "effect": "If a Pokémon holding this Berry is hit with a supereffective Fighting-type move, the power of that move will be weakened.",
     "category": "Berries"
   },
   {
     "name": "Coba Berry",
-    "effect": "If a Pok�mon holding this Berry is hit with a supereffective Flying-type move, the power of that move will be weakened.",
+    "effect": "If a Pokémon holding this Berry is hit with a supereffective Flying-type move, the power of that move will be weakened.",
     "category": "Berries"
   },
   {
     "name": "Colbur Berry",
-    "effect": "If a Pok�mon holding this Berry is hit with a supereffective Dark-type move, the power of that move will be weakened.",
+    "effect": "If a Pokémon holding this Berry is hit with a supereffective Dark-type move, the power of that move will be weakened.",
     "category": "Berries"
   },
   {
     "name": "Haban Berry",
-    "effect": "If a Pok�mon holding this Berry is hit with a supereffective Dragon-type move, the power of that move will be weakened.",
+    "effect": "If a Pokémon holding this Berry is hit with a supereffective Dragon-type move, the power of that move will be weakened.",
     "category": "Berries"
   },
   {
     "name": "Kasib Berry",
-    "effect": "If a Pok�mon holding this Berry is hit with a supereffective Ghost-type move, the power of that move will be weakened.",
+    "effect": "If a Pokémon holding this Berry is hit with a supereffective Ghost-type move, the power of that move will be weakened.",
     "category": "Berries"
   },
   {
     "name": "Kebia Berry",
-    "effect": "If a Pok�mon holding this Berry is hit with a supereffective Poison-type move, the power of that move will be weakened.",
+    "effect": "If a Pokémon holding this Berry is hit with a supereffective Poison-type move, the power of that move will be weakened.",
     "category": "Berries"
   },
   {
     "name": "Leppa Berry",
-    "effect": "If a Pok�mon holds one of these Berries, it will be able to restore 10 PP to a move.",
+    "effect": "If a Pokémon holds one of these Berries, it will be able to restore 10 PP to a move.",
     "category": "Berries"
   },
   {
     "name": "Lum Berry",
-    "effect": "If a Pok�mon holds one of these Berries, it will be able to cure itself of any status condition it may have.",
+    "effect": "If a Pokémon holds one of these Berries, it will be able to cure itself of any status condition it may have.",
     "category": "Berries"
   },
   {
     "name": "Occa Berry",
-    "effect": "If a Pok�mon holding this Berry is hit with a supereffective Fire-type move, the power of that move will be weakened.",
+    "effect": "If a Pokémon holding this Berry is hit with a supereffective Fire-type move, the power of that move will be weakened.",
     "category": "Berries"
   },
   {
     "name": "Oran Berry",
-    "effect": "If a Pok�mon holds one of these Berries, it will be able to restore 10 HP to itself.",
+    "effect": "If a Pokémon holds one of these Berries, it will be able to restore 10 HP to itself.",
     "category": "Berries"
   },
   {
     "name": "Passho Berry",
-    "effect": "If a Pok�mon holding this Berry is hit with a supereffective Water-type move, the power of that move will be weakened.",
+    "effect": "If a Pokémon holding this Berry is hit with a supereffective Water-type move, the power of that move will be weakened.",
     "category": "Berries"
   },
   {
     "name": "Payapa Berry",
-    "effect": "If a Pok�mon holding this Berry is hit with a supereffective Psychic-type move, the power of that move will be weakened.",
+    "effect": "If a Pokémon holding this Berry is hit with a supereffective Psychic-type move, the power of that move will be weakened.",
     "category": "Berries"
   },
   {
     "name": "Pecha Berry",
-    "effect": "If a Pok�mon holds one of these Berries, it will be able to lift the effects of being poisoned from itself.",
+    "effect": "If a Pokémon holds one of these Berries, it will be able to lift the effects of being poisoned from itself.",
     "category": "Berries"
   },
   {
     "name": "Persim Berry",
-    "effect": "If a Pok�mon holds one of these Berries, it will be able to cure itself of confusion.",
+    "effect": "If a Pokémon holds one of these Berries, it will be able to cure itself of confusion.",
     "category": "Berries"
   },
   {
     "name": "Rawst Berry",
-    "effect": "If a Pok�mon holds one of these Berries, it will be able to cure itself of a burn.",
+    "effect": "If a Pokémon holds one of these Berries, it will be able to cure itself of a burn.",
     "category": "Berries"
   },
   {
     "name": "Rindo Berry",
-    "effect": "If a Pok�mon holding this Berry is hit with a supereffective Grass-type move, the power of that move will be weakened.",
+    "effect": "If a Pokémon holding this Berry is hit with a supereffective Grass-type move, the power of that move will be weakened.",
     "category": "Berries"
   },
   {
     "name": "Roseli Berry",
-    "effect": "If a Pok�mon holding this Berry is hit with a supereffective Fairy-type move, the power of that move will be weakened.",
+    "effect": "If a Pokémon holding this Berry is hit with a supereffective Fairy-type move, the power of that move will be weakened.",
     "category": "Berries"
   },
   {
     "name": "Shuca Berry",
-    "effect": "If a Pok�mon holding this Berry is hit with a supereffective Ground-type move, the power of that move will be weakened.",
+    "effect": "If a Pokémon holding this Berry is hit with a supereffective Ground-type move, the power of that move will be weakened.",
     "category": "Berries"
   },
   {
     "name": "Sitrus Berry",
-    "effect": "If a Pok�mon holds one of these Berries, it will be able to restore a small amount of HP to itself.",
+    "effect": "If a Pokémon holds one of these Berries, it will be able to restore a small amount of HP to itself.",
     "category": "Berries"
   },
   {
     "name": "Tanga Berry",
-    "effect": "If a Pok�mon holding this Berry is hit with a supereffective Bug-type move, the power of that move will be weakened.",
+    "effect": "If a Pokémon holding this Berry is hit with a supereffective Bug-type move, the power of that move will be weakened.",
     "category": "Berries"
   },
   {
     "name": "Wacan Berry",
-    "effect": "If a Pok�mon holding this Berry is hit with a supereffective Electric-type move, the power of that move will be weakened.",
+    "effect": "If a Pokémon holding this Berry is hit with a supereffective Electric-type move, the power of that move will be weakened.",
     "category": "Berries"
   },
   {
     "name": "Yache Berry",
-    "effect": "If a Pok�mon holding this Berry is hit with a supereffective Ice-type move, the power of that move will be weakened.",
+    "effect": "If a Pokémon holding this Berry is hit with a supereffective Ice-type move, the power of that move will be weakened.",
     "category": "Berries"
   }
 ];

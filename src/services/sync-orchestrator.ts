@@ -33,6 +33,8 @@ export class SyncOrchestrator {
       suffix = '-h';
     } else if (n.includes('-paldea')) {
       suffix = '-p';
+    } else if (n.includes('-eternal')) {
+      suffix = '-e';
     }
     
     return `${dexStr}${suffix}`;
@@ -73,13 +75,15 @@ export class SyncOrchestrator {
       
       let ok = 0;
       let error = 0;
+      const failedPokemon: string[] = [];
 
       for (let i = 0; i < total; i++) {
         const pkmn = CHAMPIONS_POKEMON_LIST[i];
         console.log(`[Sync] [${i + 1}/${total}] Processing ${pkmn.name}...`);
         syncEvents.emit('progress', { phase: 'pokeapi', current: i + 1, total });
 
-        const detail = await PokeAPIService.getPokemonDetail(pkmn.name);
+        // PASS dexNumber as fallback
+        const detail = await PokeAPIService.getPokemonDetail(pkmn.name, pkmn.dexNumber);
         const species = await PokeAPIService.getPokemonSpecies(pkmn.dexNumber);
         
         let description = '';
@@ -115,6 +119,7 @@ export class SyncOrchestrator {
           ok++;
         } else {
           console.warn(`[Sync] [${i + 1}/${total}] Enrichment failed for ${pkmn.name}. Using basic data.`);
+          failedPokemon.push(`${pkmn.name} (#${pkmn.dexNumber})`);
           await PokemonDAO.upsert({
             dexNumber: pkmn.dexNumber,
             name: pkmn.name,
@@ -132,6 +137,14 @@ export class SyncOrchestrator {
       }
 
       console.log(`[Sync] Completed. Success: ${ok}, Fail: ${error}, Total: ${total}`);
+      
+      if (failedPokemon.length > 0) {
+        console.log('\n[Sync] FAILED POKEMON (Copyable List):');
+        console.log('------------------------------------');
+        failedPokemon.forEach(p => console.log(`- ${p}`));
+        console.log('------------------------------------\n');
+      }
+
       await SyncDAO.logComplete(syncId);
       syncEvents.emit('complete');
     } catch (e: any) {

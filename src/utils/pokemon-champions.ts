@@ -1,978 +1,1034 @@
 export const CHAMPIONS_POKEMON_LIST = [
   {
     "dexNumber": 3,
-    "name": "Venusaur"
+    "name": "venusaur"
   },
   {
     "dexNumber": 3,
-    "name": "Venusaur-mega"
+    "name": "venusaur-mega"
   },
   {
     "dexNumber": 6,
-    "name": "Charizard"
+    "name": "charizard"
   },
   {
     "dexNumber": 6,
-    "name": "Charizard-mega"
+    "name": "charizard-mega-x"
+  },
+  {
+    "dexNumber": 6,
+    "name": "charizard-mega-y"
   },
   {
     "dexNumber": 9,
-    "name": "Blastoise"
+    "name": "blastoise"
   },
   {
     "dexNumber": 9,
-    "name": "Blastoise-mega"
+    "name": "blastoise-mega"
   },
   {
     "dexNumber": 15,
-    "name": "Beedrill"
+    "name": "beedrill"
   },
   {
     "dexNumber": 15,
-    "name": "Beedrill-mega"
+    "name": "beedrill-mega"
   },
   {
     "dexNumber": 18,
-    "name": "Pidgeot"
+    "name": "pidgeot"
   },
   {
     "dexNumber": 18,
-    "name": "Pidgeot-mega"
+    "name": "pidgeot-mega"
   },
   {
     "dexNumber": 24,
-    "name": "Arbok"
+    "name": "arbok"
   },
   {
     "dexNumber": 25,
-    "name": "Pikachu"
+    "name": "pikachu"
   },
   {
     "dexNumber": 26,
-    "name": "Raichu"
+    "name": "raichu"
+  },
+  {
+    "dexNumber": 26,
+    "name": "raichu-alola"
   },
   {
     "dexNumber": 36,
-    "name": "Clefable"
+    "name": "clefable"
   },
   {
     "dexNumber": 36,
-    "name": "Clefable-mega"
+    "name": "clefable-mega"
   },
   {
     "dexNumber": 38,
-    "name": "Ninetales"
+    "name": "ninetales"
+  },
+  {
+    "dexNumber": 38,
+    "name": "ninetales-alola"
   },
   {
     "dexNumber": 59,
-    "name": "Arcanine"
+    "name": "arcanine"
+  },
+  {
+    "dexNumber": 59,
+    "name": "arcanine-hisui"
   },
   {
     "dexNumber": 65,
-    "name": "Alakazam"
+    "name": "alakazam"
   },
   {
     "dexNumber": 65,
-    "name": "Alakazam-mega"
+    "name": "alakazam-mega"
   },
   {
     "dexNumber": 68,
-    "name": "Machamp"
+    "name": "machamp"
   },
   {
     "dexNumber": 71,
-    "name": "Victreebel"
+    "name": "victreebel"
   },
   {
     "dexNumber": 71,
-    "name": "Victreebel-mega"
+    "name": "victreebel-mega"
   },
   {
     "dexNumber": 80,
-    "name": "Slowbro"
+    "name": "slowbro"
   },
   {
     "dexNumber": 80,
-    "name": "Slowbro-mega"
+    "name": "slowbro-mega"
+  },
+  {
+    "dexNumber": 80,
+    "name": "slowbro-galar"
   },
   {
     "dexNumber": 94,
-    "name": "Gengar"
+    "name": "gengar"
   },
   {
     "dexNumber": 94,
-    "name": "Gengar-mega"
+    "name": "gengar-mega"
   },
   {
     "dexNumber": 115,
-    "name": "Kangaskhan"
+    "name": "kangaskhan"
   },
   {
     "dexNumber": 115,
-    "name": "Kangaskhan-mega"
+    "name": "kangaskhan-mega"
   },
   {
     "dexNumber": 121,
-    "name": "Starmie"
+    "name": "starmie"
   },
   {
     "dexNumber": 121,
-    "name": "Starmie-mega"
+    "name": "starmie-mega"
   },
   {
     "dexNumber": 127,
-    "name": "Pinsir"
+    "name": "pinsir"
   },
   {
     "dexNumber": 127,
-    "name": "Pinsir-mega"
+    "name": "pinsir-mega"
   },
   {
     "dexNumber": 128,
-    "name": "Tauros"
+    "name": "tauros"
+  },
+  {
+    "dexNumber": 128,
+    "name": "tauros-paldea"
   },
   {
     "dexNumber": 130,
-    "name": "Gyarados"
+    "name": "gyarados"
   },
   {
     "dexNumber": 130,
-    "name": "Gyarados-mega"
+    "name": "gyarados-mega"
   },
   {
     "dexNumber": 132,
-    "name": "Ditto"
+    "name": "ditto"
   },
   {
     "dexNumber": 134,
-    "name": "Vaporeon"
+    "name": "vaporeon"
   },
   {
     "dexNumber": 135,
-    "name": "Jolteon"
+    "name": "jolteon"
   },
   {
     "dexNumber": 136,
-    "name": "Flareon"
+    "name": "flareon"
   },
   {
     "dexNumber": 142,
-    "name": "Aerodactyl"
+    "name": "aerodactyl"
   },
   {
     "dexNumber": 142,
-    "name": "Aerodactyl-mega"
+    "name": "aerodactyl-mega"
   },
   {
     "dexNumber": 143,
-    "name": "Snorlax"
+    "name": "snorlax"
   },
   {
     "dexNumber": 149,
-    "name": "Dragonite"
+    "name": "dragonite"
   },
   {
     "dexNumber": 149,
-    "name": "Dragonite-mega"
+    "name": "dragonite-mega"
   },
   {
     "dexNumber": 154,
-    "name": "Meganium"
+    "name": "meganium"
   },
   {
     "dexNumber": 154,
-    "name": "Meganium-mega"
+    "name": "meganium-mega"
   },
   {
     "dexNumber": 157,
-    "name": "Typhlosion"
+    "name": "typhlosion"
+  },
+  {
+    "dexNumber": 157,
+    "name": "typhlosion-hisui"
   },
   {
     "dexNumber": 160,
-    "name": "Feraligatr"
+    "name": "feraligatr"
   },
   {
     "dexNumber": 160,
-    "name": "Feraligatr-mega"
+    "name": "feraligatr-mega"
   },
   {
     "dexNumber": 168,
-    "name": "Ariados"
+    "name": "ariados"
   },
   {
     "dexNumber": 181,
-    "name": "Ampharos"
+    "name": "ampharos"
   },
   {
     "dexNumber": 181,
-    "name": "Ampharos-mega"
+    "name": "ampharos-mega"
   },
   {
     "dexNumber": 184,
-    "name": "Azumarill"
+    "name": "azumarill"
   },
   {
     "dexNumber": 186,
-    "name": "Politoed"
+    "name": "politoed"
   },
   {
     "dexNumber": 196,
-    "name": "Espeon"
+    "name": "espeon"
   },
   {
     "dexNumber": 197,
-    "name": "Umbreon"
+    "name": "umbreon"
   },
   {
     "dexNumber": 199,
-    "name": "Slowking"
+    "name": "slowking"
+  },
+  {
+    "dexNumber": 199,
+    "name": "slowking-galar"
   },
   {
     "dexNumber": 205,
-    "name": "Forretress"
+    "name": "forretress"
   },
   {
     "dexNumber": 208,
-    "name": "Steelix"
+    "name": "steelix"
   },
   {
     "dexNumber": 208,
-    "name": "Steelix-mega"
+    "name": "steelix-mega"
   },
   {
     "dexNumber": 212,
-    "name": "Scizor"
+    "name": "scizor"
   },
   {
     "dexNumber": 212,
-    "name": "Scizor-mega"
+    "name": "scizor-mega"
   },
   {
     "dexNumber": 214,
-    "name": "Heracross"
+    "name": "heracross"
   },
   {
     "dexNumber": 214,
-    "name": "Heracross-mega"
+    "name": "heracross-mega"
   },
   {
     "dexNumber": 227,
-    "name": "Skarmory"
+    "name": "skarmory"
   },
   {
     "dexNumber": 227,
-    "name": "Skarmory-mega"
+    "name": "skarmory-mega"
   },
   {
     "dexNumber": 229,
-    "name": "Houndoom"
+    "name": "houndoom"
   },
   {
     "dexNumber": 229,
-    "name": "Houndoom-mega"
+    "name": "houndoom-mega"
   },
   {
     "dexNumber": 248,
-    "name": "Tyranitar"
+    "name": "tyranitar"
   },
   {
     "dexNumber": 248,
-    "name": "Tyranitar-mega"
+    "name": "tyranitar-mega"
   },
   {
     "dexNumber": 279,
-    "name": "Pelipper"
+    "name": "pelipper"
   },
   {
     "dexNumber": 282,
-    "name": "Gardevoir"
+    "name": "gardevoir"
   },
   {
     "dexNumber": 282,
-    "name": "Gardevoir-mega"
+    "name": "gardevoir-mega"
   },
   {
     "dexNumber": 302,
-    "name": "Sableye"
+    "name": "sableye"
   },
   {
     "dexNumber": 302,
-    "name": "Sableye-mega"
+    "name": "sableye-mega"
   },
   {
     "dexNumber": 306,
-    "name": "Aggron"
+    "name": "aggron"
   },
   {
     "dexNumber": 306,
-    "name": "Aggron-mega"
+    "name": "aggron-mega"
   },
   {
     "dexNumber": 308,
-    "name": "Medicham"
+    "name": "medicham"
   },
   {
     "dexNumber": 308,
-    "name": "Medicham-mega"
+    "name": "medicham-mega"
   },
   {
     "dexNumber": 310,
-    "name": "Manectric"
+    "name": "manectric"
   },
   {
     "dexNumber": 310,
-    "name": "Manectric-mega"
+    "name": "manectric-mega"
   },
   {
     "dexNumber": 319,
-    "name": "Sharpedo"
+    "name": "sharpedo"
   },
   {
     "dexNumber": 319,
-    "name": "Sharpedo-mega"
+    "name": "sharpedo-mega"
   },
   {
     "dexNumber": 323,
-    "name": "Camerupt"
+    "name": "camerupt"
   },
   {
     "dexNumber": 323,
-    "name": "Camerupt-mega"
+    "name": "camerupt-mega"
   },
   {
     "dexNumber": 324,
-    "name": "Torkoal"
+    "name": "torkoal"
   },
   {
     "dexNumber": 334,
-    "name": "Altaria"
+    "name": "altaria"
   },
   {
     "dexNumber": 334,
-    "name": "Altaria-mega"
+    "name": "altaria-mega"
   },
   {
     "dexNumber": 350,
-    "name": "Milotic"
+    "name": "milotic"
   },
   {
     "dexNumber": 351,
-    "name": "Castform"
+    "name": "castform"
   },
   {
     "dexNumber": 354,
-    "name": "Banette"
+    "name": "banette"
   },
   {
     "dexNumber": 354,
-    "name": "Banette-mega"
+    "name": "banette-mega"
   },
   {
     "dexNumber": 358,
-    "name": "Chimecho"
+    "name": "chimecho"
   },
   {
     "dexNumber": 358,
-    "name": "Chimecho-mega"
+    "name": "chimecho-mega"
   },
   {
     "dexNumber": 359,
-    "name": "Absol"
+    "name": "absol"
   },
   {
     "dexNumber": 359,
-    "name": "Absol-mega"
+    "name": "absol-mega"
   },
   {
     "dexNumber": 362,
-    "name": "Glalie"
+    "name": "glalie"
   },
   {
     "dexNumber": 362,
-    "name": "Glalie-mega"
+    "name": "glalie-mega"
   },
   {
     "dexNumber": 389,
-    "name": "Torterra"
+    "name": "torterra"
   },
   {
     "dexNumber": 392,
-    "name": "Infernape"
+    "name": "infernape"
   },
   {
     "dexNumber": 395,
-    "name": "Empoleon"
+    "name": "empoleon"
   },
   {
     "dexNumber": 405,
-    "name": "Luxray"
+    "name": "luxray"
   },
   {
     "dexNumber": 407,
-    "name": "Roserade"
+    "name": "roserade"
   },
   {
     "dexNumber": 409,
-    "name": "Rampardos"
+    "name": "rampardos"
   },
   {
     "dexNumber": 411,
-    "name": "Bastiodon"
+    "name": "bastiodon"
   },
   {
     "dexNumber": 428,
-    "name": "Lopunny"
+    "name": "lopunny"
   },
   {
     "dexNumber": 428,
-    "name": "Lopunny-mega"
+    "name": "lopunny-mega"
   },
   {
     "dexNumber": 442,
-    "name": "Spiritomb"
+    "name": "spiritomb"
   },
   {
     "dexNumber": 445,
-    "name": "Garchomp"
+    "name": "garchomp"
   },
   {
     "dexNumber": 445,
-    "name": "Garchomp-mega"
+    "name": "garchomp-mega"
   },
   {
     "dexNumber": 448,
-    "name": "Lucario"
+    "name": "lucario"
   },
   {
     "dexNumber": 448,
-    "name": "Lucario-mega"
+    "name": "lucario-mega"
   },
   {
     "dexNumber": 450,
-    "name": "Hippowdon"
+    "name": "hippowdon"
   },
   {
     "dexNumber": 454,
-    "name": "Toxicroak"
+    "name": "toxicroak"
   },
   {
     "dexNumber": 460,
-    "name": "Abomasnow"
+    "name": "abomasnow"
   },
   {
     "dexNumber": 460,
-    "name": "Abomasnow-mega"
+    "name": "abomasnow-mega"
   },
   {
     "dexNumber": 461,
-    "name": "Weavile"
+    "name": "weavile"
   },
   {
     "dexNumber": 464,
-    "name": "Rhyperior"
+    "name": "rhyperior"
   },
   {
     "dexNumber": 470,
-    "name": "Leafeon"
+    "name": "leafeon"
   },
   {
     "dexNumber": 471,
-    "name": "Glaceon"
+    "name": "glaceon"
   },
   {
     "dexNumber": 472,
-    "name": "Gliscor"
+    "name": "gliscor"
   },
   {
     "dexNumber": 473,
-    "name": "Mamoswine"
+    "name": "mamoswine"
   },
   {
     "dexNumber": 475,
-    "name": "Gallade"
+    "name": "gallade"
   },
   {
     "dexNumber": 475,
-    "name": "Gallade-mega"
+    "name": "gallade-mega"
   },
   {
     "dexNumber": 478,
-    "name": "Froslass"
+    "name": "froslass"
   },
   {
     "dexNumber": 478,
-    "name": "Froslass-mega"
+    "name": "froslass-mega"
   },
   {
     "dexNumber": 479,
-    "name": "Rotom"
+    "name": "rotom"
   },
   {
     "dexNumber": 497,
-    "name": "Serperior"
+    "name": "serperior"
   },
   {
     "dexNumber": 500,
-    "name": "Emboar"
+    "name": "emboar"
   },
   {
     "dexNumber": 500,
-    "name": "Emboar-mega"
+    "name": "emboar-mega"
   },
   {
     "dexNumber": 503,
-    "name": "Samurott"
+    "name": "samurott"
+  },
+  {
+    "dexNumber": 503,
+    "name": "samurott-hisui"
   },
   {
     "dexNumber": 505,
-    "name": "Watchog"
+    "name": "watchog"
   },
   {
     "dexNumber": 510,
-    "name": "Liepard"
+    "name": "liepard"
   },
   {
     "dexNumber": 512,
-    "name": "Simisage"
+    "name": "simisage"
   },
   {
     "dexNumber": 514,
-    "name": "Simisear"
+    "name": "simisear"
   },
   {
     "dexNumber": 516,
-    "name": "Simipour"
+    "name": "simipour"
   },
   {
     "dexNumber": 530,
-    "name": "Excadrill"
+    "name": "excadrill"
   },
   {
     "dexNumber": 530,
-    "name": "Excadrill-mega"
+    "name": "excadrill-mega"
   },
   {
     "dexNumber": 531,
-    "name": "Audino"
+    "name": "audino"
   },
   {
     "dexNumber": 531,
-    "name": "Audino-mega"
+    "name": "audino-mega"
   },
   {
     "dexNumber": 534,
-    "name": "Conkeldurr"
+    "name": "conkeldurr"
   },
   {
     "dexNumber": 547,
-    "name": "Whimsicott"
+    "name": "whimsicott"
   },
   {
     "dexNumber": 553,
-    "name": "Krookodile"
+    "name": "krookodile"
   },
   {
     "dexNumber": 563,
-    "name": "Cofagrigus"
+    "name": "cofagrigus"
   },
   {
     "dexNumber": 569,
-    "name": "Garbodor"
+    "name": "garbodor"
   },
   {
     "dexNumber": 571,
-    "name": "Zoroark"
+    "name": "zoroark"
+  },
+  {
+    "dexNumber": 571,
+    "name": "zoroark-hisui"
   },
   {
     "dexNumber": 579,
-    "name": "Reuniclus"
+    "name": "reuniclus"
   },
   {
     "dexNumber": 584,
-    "name": "Vanilluxe"
+    "name": "vanilluxe"
   },
   {
     "dexNumber": 587,
-    "name": "Emolga"
+    "name": "emolga"
   },
   {
     "dexNumber": 609,
-    "name": "Chandelure"
+    "name": "chandelure"
   },
   {
     "dexNumber": 609,
-    "name": "Chandelure-mega"
+    "name": "chandelure-mega"
   },
   {
     "dexNumber": 614,
-    "name": "Beartic"
+    "name": "beartic"
   },
   {
     "dexNumber": 618,
-    "name": "Stunfisk"
+    "name": "stunfisk"
+  },
+  {
+    "dexNumber": 618,
+    "name": "stunfisk-galar"
   },
   {
     "dexNumber": 623,
-    "name": "Golurk"
+    "name": "golurk"
   },
   {
     "dexNumber": 623,
-    "name": "Golurk-mega"
+    "name": "golurk-mega"
   },
   {
     "dexNumber": 635,
-    "name": "Hydreigon"
+    "name": "hydreigon"
   },
   {
     "dexNumber": 637,
-    "name": "Volcarona"
+    "name": "volcarona"
   },
   {
     "dexNumber": 652,
-    "name": "Chesnaught"
+    "name": "chesnaught"
   },
   {
     "dexNumber": 652,
-    "name": "Chesnaught-mega"
+    "name": "chesnaught-mega"
   },
   {
     "dexNumber": 655,
-    "name": "Delphox"
+    "name": "delphox"
   },
   {
     "dexNumber": 655,
-    "name": "Delphox-mega"
+    "name": "delphox-mega"
   },
   {
     "dexNumber": 658,
-    "name": "Greninja"
+    "name": "greninja"
   },
   {
     "dexNumber": 658,
-    "name": "Greninja-mega"
+    "name": "greninja-mega"
   },
   {
     "dexNumber": 660,
-    "name": "Diggersby"
+    "name": "diggersby"
   },
   {
     "dexNumber": 663,
-    "name": "Talonflame"
+    "name": "talonflame"
   },
   {
     "dexNumber": 666,
-    "name": "Vivillon"
+    "name": "vivillon"
   },
   {
     "dexNumber": 670,
-    "name": "Floette"
+    "name": "floette-eternal"
   },
   {
     "dexNumber": 670,
-    "name": "Floette-mega"
+    "name": "floette-mega"
   },
   {
     "dexNumber": 671,
-    "name": "Florges"
+    "name": "florges"
   },
   {
     "dexNumber": 675,
-    "name": "Pangoro"
+    "name": "pangoro"
   },
   {
     "dexNumber": 676,
-    "name": "Furfrou"
+    "name": "furfrou"
   },
   {
     "dexNumber": 678,
-    "name": "Meowstic"
+    "name": "meowstic"
   },
   {
     "dexNumber": 678,
-    "name": "Meowstic-mega"
+    "name": "meowstic-mega"
   },
   {
     "dexNumber": 681,
-    "name": "Aegislash"
+    "name": "aegislash"
   },
   {
     "dexNumber": 683,
-    "name": "Aromatisse"
+    "name": "aromatisse"
   },
   {
     "dexNumber": 685,
-    "name": "Slurpuff"
+    "name": "slurpuff"
   },
   {
     "dexNumber": 693,
-    "name": "Clawitzer"
+    "name": "clawitzer"
   },
   {
     "dexNumber": 695,
-    "name": "Heliolisk"
+    "name": "heliolisk"
   },
   {
     "dexNumber": 697,
-    "name": "Tyrantrum"
+    "name": "tyrantrum"
   },
   {
     "dexNumber": 699,
-    "name": "Aurorus"
+    "name": "aurorus"
   },
   {
     "dexNumber": 700,
-    "name": "Sylveon"
+    "name": "sylveon"
   },
   {
     "dexNumber": 701,
-    "name": "Hawlucha"
+    "name": "hawlucha"
   },
   {
     "dexNumber": 701,
-    "name": "Hawlucha-mega"
+    "name": "hawlucha-mega"
   },
   {
     "dexNumber": 702,
-    "name": "Dedenne"
+    "name": "dedenne"
   },
   {
     "dexNumber": 706,
-    "name": "Goodra"
+    "name": "goodra"
+  },
+  {
+    "dexNumber": 706,
+    "name": "goodra-hisui"
   },
   {
     "dexNumber": 707,
-    "name": "Klefki"
+    "name": "klefki"
   },
   {
     "dexNumber": 709,
-    "name": "Trevenant"
+    "name": "trevenant"
   },
   {
     "dexNumber": 711,
-    "name": "Gourgeist"
+    "name": "gourgeist"
   },
   {
     "dexNumber": 713,
-    "name": "Avalugg"
+    "name": "avalugg"
+  },
+  {
+    "dexNumber": 713,
+    "name": "avalugg-hisui"
   },
   {
     "dexNumber": 715,
-    "name": "Noivern"
+    "name": "noivern"
   },
   {
     "dexNumber": 724,
-    "name": "Decidueye"
+    "name": "decidueye"
+  },
+  {
+    "dexNumber": 724,
+    "name": "decidueye-hisui"
   },
   {
     "dexNumber": 727,
-    "name": "Incineroar"
+    "name": "incineroar"
   },
   {
     "dexNumber": 730,
-    "name": "Primarina"
+    "name": "primarina"
   },
   {
     "dexNumber": 733,
-    "name": "Toucannon"
+    "name": "toucannon"
   },
   {
     "dexNumber": 740,
-    "name": "Crabominable"
+    "name": "crabominable"
   },
   {
     "dexNumber": 740,
-    "name": "Crabominable-mega"
+    "name": "crabominable-mega"
   },
   {
     "dexNumber": 745,
-    "name": "Lycanroc"
+    "name": "lycanroc"
   },
   {
     "dexNumber": 748,
-    "name": "Toxapex"
+    "name": "toxapex"
   },
   {
     "dexNumber": 750,
-    "name": "Mudsdale"
+    "name": "mudsdale"
   },
   {
     "dexNumber": 752,
-    "name": "Araquanid"
+    "name": "araquanid"
   },
   {
     "dexNumber": 758,
-    "name": "Salazzle"
+    "name": "salazzle"
   },
   {
     "dexNumber": 763,
-    "name": "Tsareena"
+    "name": "tsareena"
   },
   {
     "dexNumber": 765,
-    "name": "Oranguru"
+    "name": "oranguru"
   },
   {
     "dexNumber": 766,
-    "name": "Passimian"
+    "name": "passimian"
   },
   {
     "dexNumber": 778,
-    "name": "Mimikyu"
+    "name": "mimikyu"
   },
   {
     "dexNumber": 780,
-    "name": "Drampa"
+    "name": "drampa"
   },
   {
     "dexNumber": 780,
-    "name": "Drampa-mega"
+    "name": "drampa-mega"
   },
   {
     "dexNumber": 784,
-    "name": "Kommo-o"
+    "name": "kommo-o"
   },
   {
     "dexNumber": 823,
-    "name": "Corviknight"
+    "name": "corviknight"
   },
   {
     "dexNumber": 841,
-    "name": "Flapple"
+    "name": "flapple"
   },
   {
     "dexNumber": 842,
-    "name": "Appletun"
+    "name": "appletun"
   },
   {
     "dexNumber": 844,
-    "name": "Sandaconda"
+    "name": "sandaconda"
   },
   {
     "dexNumber": 855,
-    "name": "Polteageist"
+    "name": "polteageist"
   },
   {
     "dexNumber": 858,
-    "name": "Hatterene"
+    "name": "hatterene"
   },
   {
     "dexNumber": 866,
-    "name": "Mr. Rime"
+    "name": "mr.-rime"
   },
   {
     "dexNumber": 867,
-    "name": "Runerigus"
+    "name": "runerigus"
   },
   {
     "dexNumber": 869,
-    "name": "Alcremie"
+    "name": "alcremie"
   },
   {
     "dexNumber": 877,
-    "name": "Morpeko"
+    "name": "morpeko"
   },
   {
     "dexNumber": 887,
-    "name": "Dragapult"
+    "name": "dragapult"
   },
   {
     "dexNumber": 899,
-    "name": "Wyrdeer"
+    "name": "wyrdeer"
   },
   {
     "dexNumber": 900,
-    "name": "Kleavor"
+    "name": "kleavor"
   },
   {
     "dexNumber": 902,
-    "name": "Basculegion"
+    "name": "basculegion"
   },
   {
     "dexNumber": 903,
-    "name": "Sneasler"
+    "name": "sneasler"
   },
   {
     "dexNumber": 908,
-    "name": "Meowscarada"
+    "name": "meowscarada"
   },
   {
     "dexNumber": 911,
-    "name": "Skeledirge"
+    "name": "skeledirge"
   },
   {
     "dexNumber": 914,
-    "name": "Quaquaval"
+    "name": "quaquaval"
   },
   {
     "dexNumber": 925,
-    "name": "Maushold"
+    "name": "maushold"
   },
   {
     "dexNumber": 934,
-    "name": "Garganacl"
+    "name": "garganacl"
   },
   {
     "dexNumber": 936,
-    "name": "Armarouge"
+    "name": "armarouge"
   },
   {
     "dexNumber": 937,
-    "name": "Ceruledge"
+    "name": "ceruledge"
   },
   {
     "dexNumber": 939,
-    "name": "Bellibolt"
+    "name": "bellibolt"
   },
   {
     "dexNumber": 952,
-    "name": "Scovillain"
+    "name": "scovillain"
   },
   {
     "dexNumber": 952,
-    "name": "Scovillain-mega"
+    "name": "scovillain-mega"
   },
   {
     "dexNumber": 956,
-    "name": "Espathra"
+    "name": "espathra"
   },
   {
     "dexNumber": 959,
-    "name": "Tinkaton"
+    "name": "tinkaton"
   },
   {
     "dexNumber": 964,
-    "name": "Palafin"
+    "name": "palafin"
   },
   {
     "dexNumber": 968,
-    "name": "Orthworm"
+    "name": "orthworm"
   },
   {
     "dexNumber": 970,
-    "name": "Glimmora"
+    "name": "glimmora"
   },
   {
     "dexNumber": 970,
-    "name": "Glimmora-mega"
+    "name": "glimmora-mega"
   },
   {
     "dexNumber": 981,
-    "name": "Farigiraf"
+    "name": "farigiraf"
   },
   {
     "dexNumber": 983,
-    "name": "Kingambit"
+    "name": "kingambit"
   },
   {
     "dexNumber": 1013,
-    "name": "Sinistcha"
+    "name": "sinistcha"
   },
   {
     "dexNumber": 1018,
-    "name": "Archaludon"
+    "name": "archaludon"
   },
   {
     "dexNumber": 1019,
-    "name": "Hydrapple"
+    "name": "hydrapple"
   }
 ];

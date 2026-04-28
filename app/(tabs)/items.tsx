@@ -1,23 +1,19 @@
-import React, { useEffect, useState, useLayoutEffect } from 'react';
-import { StyleSheet, FlatList, ActivityIndicator, Pressable, Alert, Modal } from 'react-native';
+import { ItemCard } from '@/components/item-card';
 import { Text, View } from '@/components/Themed';
 import { ItemDAO } from '@/src/database/dao/pokemon.dao';
 import { Item } from '@/src/models/pokemon';
-import { ItemCard } from '@/components/item-card';
-import { SyncOrchestrator, syncEvents } from '@/src/services/sync-orchestrator';
-import { useNavigation } from 'expo-router';
+import { syncEvents } from '@/src/services/sync-orchestrator';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import Colors from '@/constants/Colors';
-import { useColorScheme } from '@/components/useColorScheme';
+import React, { useEffect, useState } from 'react';
+import { ActivityIndicator, Alert, FlatList, Modal, Pressable, StyleSheet } from 'react-native';
+
+import { router } from 'expo-router';
 
 export default function ItemsScreen() {
   const [items, setItems] = useState<Item[]>([]);
   const [loading, setLoading] = useState(true);
   const [syncing, setSyncing] = useState(false);
   const [syncProgress, setSyncProgress] = useState({ current: 0, total: 0, phase: '' });
-  
-  const navigation = useNavigation();
-  const colorScheme = useColorScheme();
 
   const loadItems = async () => {
     try {
@@ -59,37 +55,10 @@ export default function ItemsScreen() {
     };
   }, []);
 
-  const handleSync = () => {
-    Alert.alert(
-      'Sincronizar',
-      '¿Deseas actualizar la base de datos de Pokémon y Objetos? Esto puede tardar unos minutos.',
-      [
-        { text: 'Cancelar', style: 'cancel' },
-        { 
-          text: 'Sincronizar', 
-          onPress: async () => {
-            setSyncing(true);
-            SyncOrchestrator.startSync();
-          }
-        },
-      ]
-    );
-  };
-
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerRight: () => (
-        <Pressable onPress={handleSync} style={({ pressed }) => ({ opacity: pressed ? 0.5 : 1, marginRight: 15 })}>
-          <FontAwesome name="refresh" size={20} color={Colors[colorScheme ?? 'light'].text} />
-        </Pressable>
-      ),
-    });
-  }, [navigation, colorScheme]);
-
   if (loading) {
     return (
       <View style={styles.center}>
-        <ActivityIndicator size="large" color={Colors[colorScheme ?? 'light'].tint} />
+        <ActivityIndicator size="large" color="#d4af37" />
       </View>
     );
   }
@@ -103,9 +72,10 @@ export default function ItemsScreen() {
         contentContainerStyle={styles.listContent}
         ListEmptyComponent={
           <View style={styles.emptyContainer}>
+            <FontAwesome name="briefcase" size={60} color="rgba(212, 175, 55, 0.2)" />
             <Text style={styles.emptyText}>No hay objetos disponibles.</Text>
-            <Pressable onPress={handleSync} style={styles.syncButton}>
-              <Text style={styles.syncButtonText}>Sincronizar ahora</Text>
+            <Pressable onPress={() => router.push('/settings')} style={styles.settingsButton}>
+              <Text style={styles.settingsButtonText}>Ir a Configuración</Text>
             </Pressable>
           </View>
         }
@@ -114,7 +84,10 @@ export default function ItemsScreen() {
       <Modal visible={syncing} transparent animationType="fade">
         <View style={styles.modalOverlay}>
           <View style={styles.modalContent}>
-            <ActivityIndicator size="large" color={Colors[colorScheme ?? 'light'].tint} />
+            <View style={[styles.corner, styles.cornerTL]} />
+            <View style={[styles.corner, styles.cornerBR]} />
+
+            <ActivityIndicator size="large" color="#d4af37" />
             <Text style={styles.syncTitle}>
               {syncProgress.phase === 'items' ? 'Sincronizando Objetos...' : 'Sincronizando Pokémon...'}
             </Text>
@@ -134,11 +107,13 @@ export default function ItemsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#050505',
   },
   center: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#050505',
   },
   listContent: {
     paddingVertical: 16,
@@ -150,53 +125,81 @@ const styles = StyleSheet.create({
     marginTop: 100,
   },
   emptyText: {
-    fontSize: 16,
-    color: '#6b7280',
-    marginBottom: 20,
+    fontSize: 18,
+    color: 'rgba(255, 255, 255, 0.5)',
+    marginVertical: 20,
+    fontWeight: '500',
   },
-  syncButton: {
-    backgroundColor: '#d4af37',
-    paddingHorizontal: 20,
-    paddingVertical: 10,
+  settingsButton: {
+    backgroundColor: 'transparent',
+    paddingHorizontal: 24,
+    paddingVertical: 12,
     borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#d4af37',
   },
-  syncButtonText: {
-    color: '#fff',
+  settingsButtonText: {
+    color: '#d4af37',
     fontWeight: 'bold',
+    textTransform: 'uppercase',
+    letterSpacing: 1,
   },
   modalOverlay: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    backgroundColor: 'rgba(0,0,0,0.85)',
     justifyContent: 'center',
     alignItems: 'center',
   },
   modalContent: {
-    backgroundColor: '#fff',
-    padding: 30,
-    borderRadius: 16,
+    backgroundColor: '#0a0a0a',
+    padding: 40,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: 'rgba(212, 175, 55, 0.3)',
     alignItems: 'center',
-    width: '80%',
+    width: '85%',
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.25,
-    shadowRadius: 10,
-    elevation: 5,
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 1,
+    shadowRadius: 20,
+    elevation: 10,
+  },
+  corner: {
+    position: 'absolute',
+    width: 15,
+    height: 15,
+    borderColor: 'rgba(212, 175, 55, 0.8)',
+  },
+  cornerTL: {
+    top: 0,
+    left: 0,
+    borderTopWidth: 2,
+    borderLeftWidth: 2,
+  },
+  cornerBR: {
+    bottom: 0,
+    right: 0,
+    borderBottomWidth: 2,
+    borderRightWidth: 2,
   },
   syncTitle: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: 'bold',
-    marginTop: 20,
-    color: '#1f2937',
+    marginTop: 25,
+    color: '#fff',
+    textAlign: 'center',
   },
   syncSubtitle: {
-    fontSize: 14,
-    marginTop: 10,
-    color: '#4b5563',
+    fontSize: 16,
+    marginTop: 12,
+    color: '#d4af37',
   },
   syncWaitText: {
-    fontSize: 12,
-    marginTop: 20,
-    color: '#9ca3af',
+    fontSize: 13,
+    marginTop: 25,
+    color: 'rgba(255, 255, 255, 0.4)',
     fontStyle: 'italic',
+    textAlign: 'center',
   }
 });
+

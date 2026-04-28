@@ -18,7 +18,7 @@ export default function PokedexScreen() {
     return (
       <View style={styles.container}>
         <ActivityIndicator size="large" color="#d4af37" />
-        <Text style={styles.syncText}>Sincronizando {phase}...</Text>
+        <Text style={styles.syncText}>Synchronizing {phase}...</Text>
         <Text style={styles.progressText}>{progress.current} / {progress.total}</Text>
       </View>
     );
@@ -27,9 +27,9 @@ export default function PokedexScreen() {
   if (pokemons.length === 0 && !isLoading) {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>No hay datos locales</Text>
+        <Text style={styles.title}>No local data found</Text>
         <Pressable style={styles.button} onPress={startSync}>
-          <Text style={styles.buttonText}>Sincronizar ahora</Text>
+          <Text style={styles.buttonText}>Sync now</Text>
         </Pressable>
       </View>
     );
