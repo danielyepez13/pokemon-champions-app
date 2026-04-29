@@ -540,6 +540,14 @@ export const CHAMPIONS_POKEMON_LIST = [
     "name": "rotom"
   },
   {
+    "dexNumber": 479,
+    "name": "rotom-wash"
+  },
+  {
+    "dexNumber": 479,
+    "name": "rotom-heat"
+  },
+  {
     "dexNumber": 497,
     "name": "serperior"
   },

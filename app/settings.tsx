@@ -10,6 +10,7 @@ import { Stack } from 'expo-router';
 export default function SettingsScreen() {
   const [syncing, setSyncing] = useState(false);
   const [syncProgress, setSyncProgress] = useState({ current: 0, total: 0, phase: '' });
+  const [lastMetaSync, setLastMetaSync] = useState<string | null>(null);
   const colorScheme = useColorScheme();
 
   useEffect(() => {
@@ -37,6 +38,43 @@ export default function SettingsScreen() {
       syncEvents.off('error', onError);
     };
   }, []);
+
+  useEffect(() => {
+    loadLastMetaSync();
+  }, []);
+
+  const loadLastMetaSync = async () => {
+    try {
+      const { SyncDAO } = await import('@/src/database/dao/sync.dao');
+      const lastSync = await SyncDAO.getMetadata('pikalytics_last_sync');
+      setLastMetaSync(lastSync);
+    } catch { /* ignore if DB not ready */ }
+  };
+
+  const handleMetaSync = () => {
+    Alert.alert(
+      'Sync Meta Data',
+      'Download the latest competitive usage data from Pikalytics (moves, abilities, items). This takes about 15 seconds.',
+      [
+        { text: 'Cancel', style: 'cancel' },
+        {
+          text: 'Sync Now',
+          onPress: async () => {
+            setSyncing(true);
+            try {
+              await SyncOrchestrator.syncPikalytics(true);
+              await loadLastMetaSync();
+              setSyncing(false);
+              Alert.alert('Success', 'Meta data synchronized successfully.');
+            } catch (e: any) {
+              setSyncing(false);
+              Alert.alert('Error', `Error during meta sync: ${e.message}`);
+            }
+          }
+        },
+      ]
+    );
+  };
 
   const handleFullReset = () => {
     Alert.alert(
@@ -79,6 +117,29 @@ export default function SettingsScreen() {
             </View>
             <FontAwesome name="chevron-right" size={14} color="#9ca3af" />
           </Pressable>
+
+          <View style={styles.divider} />
+
+          <Pressable 
+            style={({ pressed }) => [styles.option, pressed && styles.optionPressed]} 
+            onPress={handleMetaSync}
+          >
+            <View style={[styles.optionIcon, styles.optionIconMeta]}>
+              <FontAwesome name="line-chart" size={20} color="#818cf8" />
+            </View>
+            <View style={styles.optionContent}>
+              <Text style={styles.optionTitle}>Sync Meta Data</Text>
+              <Text style={styles.optionDescription}>
+                Downloads competitive usage data from Pikalytics (moves, abilities, items).
+              </Text>
+              {lastMetaSync && (
+                <Text style={styles.lastSyncText}>
+                  Last sync: {new Date(lastMetaSync).toLocaleDateString()}
+                </Text>
+              )}
+            </View>
+            <FontAwesome name="chevron-right" size={14} color="#9ca3af" />
+          </Pressable>
         </View>
 
         <View style={styles.section}>
@@ -106,14 +167,26 @@ export default function SettingsScreen() {
           <View style={styles.modalContent}>
             <ActivityIndicator size="large" color="#d4af37" />
             <Text style={styles.syncTitle}>
-              {syncProgress.phase === 'items' ? 'Synchronizing Items...' : 'Synchronizing Pokemon...'}
+              {syncProgress.phase === 'pikalytics'
+                ? 'Synchronizing Meta Data...'
+                : syncProgress.phase === 'items'
+                  ? 'Synchronizing Items...'
+                  : 'Synchronizing Pokemon...'}
             </Text>
             {syncProgress.total > 0 && (
               <Text style={styles.syncSubtitle}>
-                {syncProgress.phase === 'items' ? 'Processing item:' : 'Processing Pokemon:'} {syncProgress.current} / {syncProgress.total}
+                {syncProgress.phase === 'pikalytics'
+                  ? 'Fetching Pikalytics data:'
+                  : syncProgress.phase === 'items'
+                    ? 'Processing item:'
+                    : 'Processing Pokemon:'} {syncProgress.current} / {syncProgress.total}
               </Text>
             )}
-            <Text style={styles.syncWaitText}>Deleting database and rebuilding...</Text>
+            <Text style={styles.syncWaitText}>
+              {syncProgress.phase === 'pikalytics'
+                ? 'Downloading competitive usage data...'
+                : 'Deleting database and rebuilding...'}
+            </Text>
           </View>
         </View>
       </Modal>
@@ -187,6 +260,20 @@ const styles = StyleSheet.create({
     color: 'rgba(255, 255, 255, 0.5)',
     marginTop: 4,
     lineHeight: 18,
+  },
+  optionIconMeta: {
+    backgroundColor: 'rgba(129, 140, 248, 0.1)',
+    borderColor: 'rgba(129, 140, 248, 0.2)',
+  },
+  divider: {
+    height: 1,
+    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+    marginVertical: 4,
+  },
+  lastSyncText: {
+    fontSize: 12,
+    color: '#818cf8',
+    marginTop: 4,
   },
   infoRow: {
     flexDirection: 'row',

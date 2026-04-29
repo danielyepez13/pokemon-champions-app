@@ -1,8 +1,11 @@
 import { PokeAPIService } from './pokeapi-service';
+import { PikalyticsService } from './pikalytics-service';
 import { PokemonDAO, ItemDAO } from '../database/dao/pokemon.dao';
+import { MetaUsageDAO } from '../database/dao/meta-usage.dao';
 import { SyncDAO } from '../database/dao/sync.dao';
 import { CHAMPIONS_POKEMON_LIST } from '../utils/pokemon-champions';
 import { CHAMPIONS_ITEMS_LIST } from '../utils/items-champions';
+import { META_SYNC_CONFIG } from '../config/constants';
 import { EventEmitter } from 'eventemitter3';
 
 import { resetDatabase } from '../database/database';
@@ -35,6 +38,10 @@ export class SyncOrchestrator {
       suffix = '-p';
     } else if (n.includes('-eternal')) {
       suffix = '-e';
+    } else if (n === 'rotom-wash') {
+      suffix = '-w';
+    } else if (n === 'rotom-heat') {
+      suffix = '-h';
     }
     
     return `${dexStr}${suffix}`;
@@ -145,12 +152,99 @@ export class SyncOrchestrator {
         console.log('------------------------------------\n');
       }
 
+      // Phase 3: Pikalytics Meta Sync
+      console.log('[Sync] Phase 3: Synchronizing Pikalytics meta data...');
+      await this.syncPikalytics(true); // force=true during full sync
+
       await SyncDAO.logComplete(syncId);
       syncEvents.emit('complete');
     } catch (e: any) {
       console.error('[Sync] Fatal error during synchronization:', e);
       await SyncDAO.logFailure(syncId, e.message);
       syncEvents.emit('error', e.message);
+    }
+  }
+
+  /**
+   * Sync meta usage data from Pikalytics.
+   * Can be called independently from Settings for manual sync.
+   *
+   * @param force - If true, ignores the 7-day cooldown
+   */
+  static async syncPikalytics(force: boolean = false) {
+    // Check cooldown unless forced
+    if (!force) {
+      const lastSync = await SyncDAO.getMetadata('pikalytics_last_sync');
+      if (lastSync) {
+        const daysSince = (Date.now() - new Date(lastSync).getTime()) / (1000 * 60 * 60 * 24);
+        if (daysSince < META_SYNC_CONFIG.SYNC_INTERVAL_DAYS) {
+          console.log(`[Pikalytics] Last sync was ${daysSince.toFixed(1)} days ago. Skipping (threshold: ${META_SYNC_CONFIG.SYNC_INTERVAL_DAYS} days).`);
+          return;
+        }
+      }
+    }
+
+    const syncId = await SyncDAO.logStart('pikalytics_meta');
+
+    try {
+      // Clear existing meta data for a clean sync
+      await MetaUsageDAO.clearAll();
+
+      // Fetch all meta data with progress reporting
+      const allMeta = await PikalyticsService.fetchAllMeta(
+        (current, total, name) => {
+          syncEvents.emit('progress', { phase: 'pikalytics', current, total });
+          console.log(`[Pikalytics] [${current}/${total}] Fetching ${name}...`);
+        }
+      );
+
+      // Persist to database
+      let totalEntries = 0;
+      let matchedPokemon = 0;
+
+      for (const [pikalyticsName, meta] of allMeta) {
+        // Find the pokemon in our local DB (case-insensitive match)
+        const pokemon = await PokemonDAO.getByName(pikalyticsName);
+        if (!pokemon) {
+          console.warn(`[Pikalytics] ${pikalyticsName} not found in local DB. Skipping.`);
+          continue;
+        }
+
+        matchedPokemon++;
+
+        // Filter by minimum usage % and bulk insert
+        const relevantMoves = meta.moves.filter(m => m.usagePct >= META_SYNC_CONFIG.MIN_USAGE_PCT);
+        const relevantAbilities = meta.abilities.filter(a => a.usagePct >= META_SYNC_CONFIG.MIN_USAGE_PCT);
+        const relevantItems = meta.items.filter(i => i.usagePct >= META_SYNC_CONFIG.MIN_USAGE_PCT);
+
+        await MetaUsageDAO.bulkReplace(pokemon.id, 'move', relevantMoves.map(m => ({
+          name: m.name,
+          usagePct: m.usagePct,
+        })));
+        await MetaUsageDAO.bulkReplace(pokemon.id, 'ability', relevantAbilities.map(a => ({
+          name: a.name,
+          usagePct: a.usagePct,
+        })));
+        await MetaUsageDAO.bulkReplace(pokemon.id, 'item', relevantItems.map(i => ({
+          name: i.name,
+          usagePct: i.usagePct,
+        })));
+
+        totalEntries += relevantMoves.length + relevantAbilities.length + relevantItems.length;
+      }
+
+      // Save sync timestamp
+      await SyncDAO.setMetadata('pikalytics_last_sync', new Date().toISOString());
+      await SyncDAO.logUpdate(syncId, matchedPokemon, allMeta.size - matchedPokemon, allMeta.size);
+      await SyncDAO.logComplete(syncId);
+
+      console.log(`[Pikalytics] Sync complete. ${matchedPokemon} Pokémon matched, ${totalEntries} entries stored (>=${META_SYNC_CONFIG.MIN_USAGE_PCT}% usage).`);
+      syncEvents.emit('complete');
+    } catch (e: any) {
+      console.error('[Pikalytics] Error during meta sync:', e);
+      await SyncDAO.logFailure(syncId, e.message);
+      syncEvents.emit('error', e.message);
+      throw e; // Re-throw so the caller can handle it
     }
   }
 }

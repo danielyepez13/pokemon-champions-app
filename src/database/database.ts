@@ -18,6 +18,7 @@ export const resetDatabase = async () => {
   await database.execAsync('DROP TABLE IF EXISTS items;');
   await database.execAsync('DROP TABLE IF EXISTS abilities;');
   await database.execAsync('DROP TABLE IF EXISTS moves;');
+  await database.execAsync('DROP TABLE IF EXISTS meta_usage;');
   await database.execAsync('DROP TABLE IF EXISTS sync_log;');
   await database.execAsync('DROP TABLE IF EXISTS sync_metadata;');
   await database.execAsync('PRAGMA foreign_keys = ON;');
@@ -167,6 +168,15 @@ export const initDatabase = async () => {
       records_error   INTEGER,
       status          TEXT NOT NULL,
       error_detail    TEXT
+    );`,
+    `CREATE TABLE IF NOT EXISTS meta_usage (
+      id          INTEGER PRIMARY KEY AUTOINCREMENT,
+      pokemon_id  INTEGER NOT NULL REFERENCES pokemon(id),
+      category    TEXT NOT NULL,
+      name        TEXT NOT NULL,
+      usage_pct   REAL NOT NULL,
+      synced_at   TEXT DEFAULT (datetime('now')),
+      UNIQUE(pokemon_id, category, name)
     );`,
     `CREATE TABLE IF NOT EXISTS sync_metadata (
       key   TEXT PRIMARY KEY,
