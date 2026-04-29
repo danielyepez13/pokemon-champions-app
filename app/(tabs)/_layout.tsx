@@ -1,5 +1,6 @@
 import React from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { Link, Tabs } from 'expo-router';
 import { Pressable } from 'react-native';
 
@@ -72,7 +73,30 @@ export default function TabLayout() {
         name="battle"
         options={{
           title: 'Battle',
-          tabBarIcon: ({ color }) => <TabBarIcon name="bolt" color={color} />,
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="pokeball" size={32} color={color} style={{ marginBottom: -3 }} />
+          ),
+          headerRight: () => (
+            <Link href="/settings" asChild>
+              <Pressable>
+                {({ pressed }) => (
+                  <FontAwesome
+                    name="cog"
+                    size={22}
+                    color={Colors[colorScheme ?? 'light'].text}
+                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+                  />
+                )}
+              </Pressable>
+            </Link>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="speed-tiers"
+        options={{
+          title: 'Speed Tiers',
+          tabBarIcon: ({ color }) => <TabBarIcon name="tachometer" color={color} />,
           headerRight: () => (
             <Link href="/settings" asChild>
               <Pressable>
