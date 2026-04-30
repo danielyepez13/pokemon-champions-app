@@ -1,14 +1,14 @@
-import { PokeAPIService } from './pokeapi-service';
-import { PikalyticsService } from './pikalytics-service';
-import { PokemonDAO, ItemDAO } from '../database/dao/pokemon.dao';
-import { MetaUsageDAO } from '../database/dao/meta-usage.dao';
-import { SyncDAO } from '../database/dao/sync.dao';
-import { CHAMPIONS_POKEMON_LIST } from '../utils/pokemon-champions';
-import { CHAMPIONS_ITEMS_LIST } from '../utils/items-champions';
-import { META_SYNC_CONFIG } from '../config/constants';
 import { EventEmitter } from 'eventemitter3';
-
+import { META_SYNC_CONFIG } from '../config/constants';
+import { FeaturedTeamsDAO, MetaTeammatesDAO } from '../database/dao/meta-pokedex.dao';
+import { MetaUsageDAO } from '../database/dao/meta-usage.dao';
+import { ItemDAO, PokemonDAO } from '../database/dao/pokemon.dao';
+import { SyncDAO } from '../database/dao/sync.dao';
 import { resetDatabase } from '../database/database';
+import { CHAMPIONS_ITEMS_LIST } from '../utils/items-champions';
+import { downloadPikalyticsSpriteAsBase64 } from './image-downloader';
+import { PikalyticsService } from './pikalytics-service';
+import { PokeAPIService } from './pokeapi-service';
 
 export const syncEvents = new EventEmitter();
 
@@ -19,48 +19,19 @@ export class SyncOrchestrator {
     await this.startSync();
   }
 
-  private static getPokemonSprite(dexNumber: number, name: string): string {
-    const dexStr = String(dexNumber).padStart(3, '0');
-    let suffix = '';
-    const n = name.toLowerCase();
-    
-    if (n.includes('-mega')) {
-      if (n.includes('-mega-x')) suffix = '-mx';
-      else if (n.includes('-mega-y')) suffix = '-my';
-      else suffix = '-m';
-    } else if (n.includes('-alola')) {
-      suffix = '-a';
-    } else if (n.includes('-galar')) {
-      suffix = '-g';
-    } else if (n.includes('-hisui')) {
-      suffix = '-h';
-    } else if (n.includes('-paldea')) {
-      suffix = '-p';
-    } else if (n.includes('-eternal')) {
-      suffix = '-e';
-    } else if (n === 'rotom-wash') {
-      suffix = '-w';
-    } else if (n === 'rotom-heat') {
-      suffix = '-h';
-    }
-    
-    return `${dexStr}${suffix}`;
-  }
-
   private static getItemSprite(name: string): string {
-    // Items in imagenes_items remove spaces and hyphens
     return name.toLowerCase()
       .replace(/ /g, '')
       .replace(/-/g, '');
   }
 
   static async startSync() {
-    console.log('[Sync] Starting full synchronization...');
+    console.log('[Sync] Starting full synchronization (Pikalytics AI source)...');
     const syncId = await SyncDAO.logStart('full_sync');
     console.log(`[Sync] Logged start with ID: ${syncId}`);
-    
+
     try {
-      // Phase 1: Items Synchronization
+      // ─── Phase 1: Items ────────────────────────────────────────────────────
       console.log('[Sync] Phase 1: Synchronizing Items...');
       const totalItems = CHAMPIONS_ITEMS_LIST.length;
       for (let i = 0; i < totalItems; i++) {
@@ -71,91 +42,146 @@ export class SyncOrchestrator {
           category: item.category,
           effect: item.effect,
           sprite_url: this.getItemSprite(item.name),
-          location: '' // Can be added later
+          location: '',
         });
       }
-      console.log(`[Sync] Synchronized ${totalItems} items.`);
+      console.log(`[Sync] Phase 1 complete: ${totalItems} items synchronized.`);
 
-      // Phase 2: Pokemon Enrichment
-      const total = CHAMPIONS_POKEMON_LIST.length;
-      console.log(`[Sync] Phase 2: Enriching ${total} pokemon via PokeAPI...`);
-      
+      // ─── Phase 2: Pokédex from Pikalytics AI ──────────────────────────────
+      console.log('[Sync] Phase 2: Fetching Pokédex from Pikalytics AI index...');
+
+      // 2a. Fetch the meta index to get the ranked list of Pokémon
+      const index = await PikalyticsService.fetchIndex();
+      if (index.length === 0) {
+        throw new Error('[Sync] Pikalytics AI index returned empty. Aborting Phase 2.');
+      }
+
+      console.log(`[Sync] Phase 2: ${index.length} Pokémon found in meta index.`);
+
+      // Clear existing meta data for a clean sync
+      await MetaUsageDAO.clearAll();
+      await MetaTeammatesDAO.clearAll();
+      await FeaturedTeamsDAO.clearAll();
+
       let ok = 0;
-      let error = 0;
-      const failedPokemon: string[] = [];
+      let errors = 0;
 
-      for (let i = 0; i < total; i++) {
-        const pkmn = CHAMPIONS_POKEMON_LIST[i];
-        console.log(`[Sync] [${i + 1}/${total}] Processing ${pkmn.name}...`);
-        syncEvents.emit('progress', { phase: 'pokeapi', current: i + 1, total });
+      for (let i = 0; i < index.length; i++) {
+        const entry = index[i];
+        console.log(`[Sync] [${i + 1}/${index.length}] Processing ${entry.name} (${entry.usagePct}% usage)...`);
+        syncEvents.emit('progress', {
+          phase: 'pokeapi',
+          current: i + 1,
+          total: index.length,
+        });
 
-        // PASS dexNumber as fallback
-        const detail = await PokeAPIService.getPokemonDetail(pkmn.name, pkmn.dexNumber);
-        const species = await PokeAPIService.getPokemonSpecies(pkmn.dexNumber);
-        
-        let description = '';
-        if (species) {
-          const flavor = species.flavor_text_entries.find((e: any) => e.language.name === 'es' || e.language.name === 'en');
-          description = flavor ? flavor.flavor_text.replace(/\n|\f/g, ' ') : '';
-        }
+        try {
+          // 2b-i. Fetch competitive meta from Pikalytics AI
+          const meta = await PikalyticsService.fetchPokemonMeta(entry.name);
 
-        if (detail) {
-          const stats = {
-            hp: detail.stats[0].base_stat,
-            attack: detail.stats[1].base_stat,
-            defense: detail.stats[2].base_stat,
-            spAttack: detail.stats[3].base_stat,
-            spDefense: detail.stats[4].base_stat,
-            speed: detail.stats[5].base_stat,
-            total: detail.stats.reduce((acc: number, s: any) => acc + s.base_stat, 0)
-          };
+          // 2b-ii. Fetch base data from PokeAPI using the Pikalytics name (lowercased)
+          const pokeApiName = entry.name.toLowerCase();
+          const detail = await PokeAPIService.getPokemonDetail(pokeApiName, undefined);
+          const species = detail
+            ? await PokeAPIService.getPokemonSpecies(detail.id)
+            : null;
 
-          await PokemonDAO.upsert({
-            dexNumber: pkmn.dexNumber,
-            name: pkmn.name,
-            form: pkmn.name.includes('-') ? pkmn.name.split('-').slice(1).join('-') : '',
+          let description = '';
+          if (species) {
+            const flavor = species.flavor_text_entries?.find(
+              (e: any) => e.language.name === 'es' || e.language.name === 'en'
+            );
+            description = flavor
+              ? flavor.flavor_text.replace(/\n|\f/g, ' ')
+              : '';
+          }
+
+          // 2b-iii. Download sprite from Pikalytics CDN as Base64 (offline support)
+          const spriteBase64 = await downloadPikalyticsSpriteAsBase64(entry.name);
+
+          // Use base stats from Pikalytics if PokeAPI fails, else from PokeAPI
+          const stats = detail
+            ? {
+                hp: detail.stats[0].base_stat,
+                attack: detail.stats[1].base_stat,
+                defense: detail.stats[2].base_stat,
+                spAttack: detail.stats[3].base_stat,
+                spDefense: detail.stats[4].base_stat,
+                speed: detail.stats[5].base_stat,
+                total: detail.stats.reduce((acc: number, s: any) => acc + s.base_stat, 0),
+              }
+            : meta?.baseStats
+            ? {
+                hp: meta.baseStats.hp,
+                attack: meta.baseStats.attack,
+                defense: meta.baseStats.defense,
+                spAttack: meta.baseStats.spAttack,
+                spDefense: meta.baseStats.spDefense,
+                speed: meta.baseStats.speed,
+                total: Object.values(meta.baseStats).reduce((a, b) => a + b, 0),
+              }
+            : undefined;
+
+          // Derive the form from the Pikalytics name (e.g. "Rotom-Wash" → "wash")
+          const nameParts = entry.name.split('-');
+          const form = nameParts.length > 1 ? nameParts.slice(1).join('-').toLowerCase() : '';
+          const isMega = entry.name.toLowerCase().includes('mega');
+
+          // 2b-iv. Upsert Pokémon into DB
+          const pokemonId = await PokemonDAO.upsert({
+            dexNumber: detail?.id ?? 0,
+            name: entry.name,
+            form,
             description,
             stats,
-            height: detail.height / 10,
-            weight: detail.weight / 10,
-            spriteDefault: this.getPokemonSprite(pkmn.dexNumber, pkmn.name),
-            spriteIcon: this.getPokemonSprite(pkmn.dexNumber, pkmn.name),
-            types: detail.types.map((t: any) => t.type.name),
-            isMega: pkmn.name.toLowerCase().includes('mega')
+            height: detail ? detail.height / 10 : 0,
+            weight: detail ? detail.weight / 10 : 0,
+            spriteDefault: spriteBase64 ?? '',
+            spriteIcon: spriteBase64 ?? '',
+            types: detail?.types?.map((t: any) => t.type.name) ?? [],
+            isMega,
+            usagePct: entry.usagePct,
+            usageRank: entry.rank,
           });
+
+          // 2b-v. Persist meta_usage (moves, abilities, items)
+          if (meta && pokemonId) {
+            const relevantMoves = meta.moves.filter(m => m.usagePct >= META_SYNC_CONFIG.MIN_USAGE_PCT);
+            const relevantAbilities = meta.abilities.filter(a => a.usagePct >= META_SYNC_CONFIG.MIN_USAGE_PCT);
+            const relevantItems = meta.items.filter(i => i.usagePct >= META_SYNC_CONFIG.MIN_USAGE_PCT);
+
+            await MetaUsageDAO.bulkReplace(pokemonId, 'move', relevantMoves.map(m => ({ name: m.name, usagePct: m.usagePct })));
+            await MetaUsageDAO.bulkReplace(pokemonId, 'ability', relevantAbilities.map(a => ({ name: a.name, usagePct: a.usagePct })));
+            await MetaUsageDAO.bulkReplace(pokemonId, 'item', relevantItems.map(i => ({ name: i.name, usagePct: i.usagePct })));
+
+            // 2b-vi. Persist meta_teammates
+            await MetaTeammatesDAO.upsert(entry.name, meta.teammates);
+
+            // 2b-vii. Persist featured_teams
+            await FeaturedTeamsDAO.upsert(entry.name, meta.featuredTeams);
+          }
+
           ok++;
-        } else {
-          console.warn(`[Sync] [${i + 1}/${total}] Enrichment failed for ${pkmn.name}. Using basic data.`);
-          failedPokemon.push(`${pkmn.name} (#${pkmn.dexNumber})`);
-          await PokemonDAO.upsert({
-            dexNumber: pkmn.dexNumber,
-            name: pkmn.name,
-            form: pkmn.name.includes('-') ? pkmn.name.split('-').slice(1).join('-') : '',
-            description,
-            spriteDefault: this.getPokemonSprite(pkmn.dexNumber, pkmn.name),
-            isMega: pkmn.name.toLowerCase().includes('mega')
-          });
-          error++;
+        } catch (pokemonError: any) {
+          console.error(`[Sync] Error processing ${entry.name}:`, pokemonError.message);
+          errors++;
         }
 
+        // Log progress every 5 Pokémon
         if (i % 5 === 0) {
-          await SyncDAO.logUpdate(syncId, ok, error, total);
+          await SyncDAO.logUpdate(syncId, ok, errors, index.length);
+        }
+
+        // Small delay between requests to avoid hammering the server
+        if (i < index.length - 1) {
+          await new Promise(r => setTimeout(r, META_SYNC_CONFIG.RATE_LIMIT_DELAY));
         }
       }
 
-      console.log(`[Sync] Completed. Success: ${ok}, Fail: ${error}, Total: ${total}`);
-      
-      if (failedPokemon.length > 0) {
-        console.log('\n[Sync] FAILED POKEMON (Copyable List):');
-        console.log('------------------------------------');
-        failedPokemon.forEach(p => console.log(`- ${p}`));
-        console.log('------------------------------------\n');
-      }
+      console.log(`[Sync] Phase 2 complete. Success: ${ok}, Errors: ${errors}, Total: ${index.length}`);
 
-      // Phase 3: Pikalytics Meta Sync
-      console.log('[Sync] Phase 3: Synchronizing Pikalytics meta data...');
-      await this.syncPikalytics(true); // force=true during full sync
-
+      // Save sync timestamps
+      await SyncDAO.setMetadata('pikalytics_last_sync', new Date().toISOString());
       await SyncDAO.logComplete(syncId);
       syncEvents.emit('complete');
     } catch (e: any) {
@@ -166,19 +192,19 @@ export class SyncOrchestrator {
   }
 
   /**
-   * Sync meta usage data from Pikalytics.
-   * Can be called independently from Settings for manual sync.
+   * Standalone Pikalytics meta sync (can be called from Settings for a manual refresh).
+   * Skips items and PokeAPI — only refreshes meta_usage, meta_teammates, and featured_teams.
+   * Does NOT re-download images (they are already in DB).
    *
    * @param force - If true, ignores the 7-day cooldown
    */
   static async syncPikalytics(force: boolean = false) {
-    // Check cooldown unless forced
     if (!force) {
       const lastSync = await SyncDAO.getMetadata('pikalytics_last_sync');
       if (lastSync) {
         const daysSince = (Date.now() - new Date(lastSync).getTime()) / (1000 * 60 * 60 * 24);
         if (daysSince < META_SYNC_CONFIG.SYNC_INTERVAL_DAYS) {
-          console.log(`[Pikalytics] Last sync was ${daysSince.toFixed(1)} days ago. Skipping (threshold: ${META_SYNC_CONFIG.SYNC_INTERVAL_DAYS} days).`);
+          console.log(`[Pikalytics] Last sync was ${daysSince.toFixed(1)} days ago. Skipping.`);
           return;
         }
       }
@@ -187,10 +213,10 @@ export class SyncOrchestrator {
     const syncId = await SyncDAO.logStart('pikalytics_meta');
 
     try {
-      // Clear existing meta data for a clean sync
       await MetaUsageDAO.clearAll();
+      await MetaTeammatesDAO.clearAll();
+      await FeaturedTeamsDAO.clearAll();
 
-      // Fetch all meta data with progress reporting
       const allMeta = await PikalyticsService.fetchAllMeta(
         (current, total, name) => {
           syncEvents.emit('progress', { phase: 'pikalytics', current, total });
@@ -198,12 +224,10 @@ export class SyncOrchestrator {
         }
       );
 
-      // Persist to database
       let totalEntries = 0;
       let matchedPokemon = 0;
 
       for (const [pikalyticsName, meta] of allMeta) {
-        // Find the pokemon in our local DB (case-insensitive match)
         const pokemon = await PokemonDAO.getByName(pikalyticsName);
         if (!pokemon) {
           console.warn(`[Pikalytics] ${pikalyticsName} not found in local DB. Skipping.`);
@@ -212,39 +236,142 @@ export class SyncOrchestrator {
 
         matchedPokemon++;
 
-        // Filter by minimum usage % and bulk insert
         const relevantMoves = meta.moves.filter(m => m.usagePct >= META_SYNC_CONFIG.MIN_USAGE_PCT);
         const relevantAbilities = meta.abilities.filter(a => a.usagePct >= META_SYNC_CONFIG.MIN_USAGE_PCT);
         const relevantItems = meta.items.filter(i => i.usagePct >= META_SYNC_CONFIG.MIN_USAGE_PCT);
 
-        await MetaUsageDAO.bulkReplace(pokemon.id, 'move', relevantMoves.map(m => ({
-          name: m.name,
-          usagePct: m.usagePct,
-        })));
-        await MetaUsageDAO.bulkReplace(pokemon.id, 'ability', relevantAbilities.map(a => ({
-          name: a.name,
-          usagePct: a.usagePct,
-        })));
-        await MetaUsageDAO.bulkReplace(pokemon.id, 'item', relevantItems.map(i => ({
-          name: i.name,
-          usagePct: i.usagePct,
-        })));
+        await MetaUsageDAO.bulkReplace(pokemon.id, 'move', relevantMoves.map(m => ({ name: m.name, usagePct: m.usagePct })));
+        await MetaUsageDAO.bulkReplace(pokemon.id, 'ability', relevantAbilities.map(a => ({ name: a.name, usagePct: a.usagePct })));
+        await MetaUsageDAO.bulkReplace(pokemon.id, 'item', relevantItems.map(i => ({ name: i.name, usagePct: i.usagePct })));
+
+        await MetaTeammatesDAO.upsert(pikalyticsName, meta.teammates);
+        await FeaturedTeamsDAO.upsert(pikalyticsName, meta.featuredTeams);
 
         totalEntries += relevantMoves.length + relevantAbilities.length + relevantItems.length;
       }
 
-      // Save sync timestamp
       await SyncDAO.setMetadata('pikalytics_last_sync', new Date().toISOString());
       await SyncDAO.logUpdate(syncId, matchedPokemon, allMeta.size - matchedPokemon, allMeta.size);
       await SyncDAO.logComplete(syncId);
 
-      console.log(`[Pikalytics] Sync complete. ${matchedPokemon} Pokémon matched, ${totalEntries} entries stored (>=${META_SYNC_CONFIG.MIN_USAGE_PCT}% usage).`);
+      console.log(`[Pikalytics] Sync complete. ${matchedPokemon} Pokémon, ${totalEntries} entries.`);
       syncEvents.emit('complete');
     } catch (e: any) {
       console.error('[Pikalytics] Error during meta sync:', e);
       await SyncDAO.logFailure(syncId, e.message);
       syncEvents.emit('error', e.message);
-      throw e; // Re-throw so the caller can handle it
+      throw e;
     }
+  }
+
+  /**
+   * Fetches and stores a single Pokémon by its Pikalytics display name.
+   * Used when a team import detects a Pokémon not in the local DB.
+   *
+   * - Fetches meta from Pikalytics AI (may have minimal data for non-meta Pokémon)
+   * - Fetches base data from PokeAPI
+   * - Downloads sprite from Pikalytics CDN as Base64
+   * - Stores with usage_pct=0, usage_rank=0 (signals "not in current meta")
+   *
+   * @returns 'stored' | 'already_exists' | 'error'
+   */
+  static async fetchAndStoreSinglePokemon(
+    displayName: string
+  ): Promise<'stored' | 'already_exists' | 'error'> {
+    console.log(`[OnDemand] Fetching: ${displayName}`);
+
+    const existing = await PokemonDAO.getByName(displayName);
+    if (existing) {
+      console.log(`[OnDemand] ${displayName} already in DB (id=${existing.id}).`);
+      return 'already_exists';
+    }
+
+    try {
+      const slug = displayName.toLowerCase();
+
+      const meta = await PikalyticsService.fetchPokemonMeta(displayName);
+      const detail = await PokeAPIService.getPokemonDetail(slug, undefined);
+      const species = detail ? await PokeAPIService.getPokemonSpecies(detail.id) : null;
+
+      let description = '';
+      if (species) {
+        const flavor = species.flavor_text_entries?.find((e: any) => e.language.name === 'en');
+        description = flavor ? flavor.flavor_text.replace(/\n|\f/g, ' ') : '';
+      }
+
+      const spriteBase64 = await downloadPikalyticsSpriteAsBase64(displayName);
+
+      const stats = detail
+        ? {
+            hp: detail.stats[0].base_stat,
+            attack: detail.stats[1].base_stat,
+            defense: detail.stats[2].base_stat,
+            spAttack: detail.stats[3].base_stat,
+            spDefense: detail.stats[4].base_stat,
+            speed: detail.stats[5].base_stat,
+            total: detail.stats.reduce((acc: number, s: any) => acc + s.base_stat, 0),
+          }
+        : meta?.baseStats
+        ? {
+            hp: meta.baseStats.hp,
+            attack: meta.baseStats.attack,
+            defense: meta.baseStats.defense,
+            spAttack: meta.baseStats.spAttack,
+            spDefense: meta.baseStats.spDefense,
+            speed: meta.baseStats.speed,
+            total: Object.values(meta.baseStats).reduce((a, b) => a + b, 0),
+          }
+        : { hp: 0, attack: 0, defense: 0, spAttack: 0, spDefense: 0, speed: 0, total: 0 };
+
+      const nameParts = displayName.split('-');
+      const form = nameParts.length > 1 ? nameParts.slice(1).join('-').toLowerCase() : '';
+
+      const pokemonId = await PokemonDAO.upsert({
+        dexNumber: detail?.id ?? 0,
+        name: displayName,
+        form,
+        description,
+        stats,
+        height: detail ? detail.height / 10 : 0,
+        weight: detail ? detail.weight / 10 : 0,
+        spriteDefault: spriteBase64 ?? '',
+        spriteIcon: spriteBase64 ?? '',
+        types: detail?.types?.map((t: any) => t.type.name) ?? [],
+        isMega: displayName.toLowerCase().includes('mega'),
+        usagePct: 0,
+        usageRank: 0,
+      });
+
+      if (meta && pokemonId) {
+        if (meta.moves.length > 0)
+          await MetaUsageDAO.bulkReplace(pokemonId, 'move', meta.moves.map(m => ({ name: m.name, usagePct: m.usagePct })));
+        if (meta.abilities.length > 0)
+          await MetaUsageDAO.bulkReplace(pokemonId, 'ability', meta.abilities.map(a => ({ name: a.name, usagePct: a.usagePct })));
+        if (meta.items.length > 0)
+          await MetaUsageDAO.bulkReplace(pokemonId, 'item', meta.items.map(i => ({ name: i.name, usagePct: i.usagePct })));
+        if (meta.teammates.length > 0)
+          await MetaTeammatesDAO.upsert(displayName, meta.teammates);
+        if (meta.featuredTeams.length > 0)
+          await FeaturedTeamsDAO.upsert(displayName, meta.featuredTeams);
+      }
+
+      console.log(`[OnDemand] ${displayName} stored (id=${pokemonId}).`);
+      return 'stored';
+    } catch (e: any) {
+      console.error(`[OnDemand] Failed to store ${displayName}:`, e.message);
+      return 'error';
+    }
+  }
+
+  /**
+   * Given a list of display names (from a pokepaste), returns those NOT in the local DB.
+   */
+  static async getMissingPokemon(displayNames: string[]): Promise<string[]> {
+    const missing: string[] = [];
+    for (const name of displayNames) {
+      const found = await PokemonDAO.getByName(name);
+      if (!found) missing.push(name);
+    }
+    return missing;
   }
 }

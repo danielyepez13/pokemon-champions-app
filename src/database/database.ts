@@ -19,12 +19,15 @@ export const resetDatabase = async () => {
   await database.execAsync('DROP TABLE IF EXISTS abilities;');
   await database.execAsync('DROP TABLE IF EXISTS moves;');
   await database.execAsync('DROP TABLE IF EXISTS meta_usage;');
+  await database.execAsync('DROP TABLE IF EXISTS meta_teammates;');
+  await database.execAsync('DROP TABLE IF EXISTS featured_teams;');
   await database.execAsync('DROP TABLE IF EXISTS sync_log;');
   await database.execAsync('DROP TABLE IF EXISTS sync_metadata;');
   await database.execAsync('PRAGMA foreign_keys = ON;');
   console.log('[Database] Pokemon data dropped. Team data preserved. Re-initializing...');
   await initDatabase();
 };
+
 
 export const getDatabase = async (): Promise<SQLite.SQLiteDatabase> => {
   if (db) return db;
@@ -55,6 +58,8 @@ export const initDatabase = async () => {
       const hasDescription = tableInfo.some(col => col.name === 'description');
       const hasForm = tableInfo.some(col => col.name === 'form');
       const hasIsMega = tableInfo.some(col => col.name === 'is_mega');
+      const hasUsagePct = tableInfo.some(col => col.name === 'usage_pct');
+      const hasUsageRank = tableInfo.some(col => col.name === 'usage_rank');
 
       if (!hasDescription) {
         console.log('[Database] Migrating: Adding description column');
@@ -68,10 +73,19 @@ export const initDatabase = async () => {
         console.log('[Database] Migrating: Adding is_mega column');
         await database.execAsync('ALTER TABLE pokemon ADD COLUMN is_mega INTEGER DEFAULT 0;');
       }
+      if (!hasUsagePct) {
+        console.log('[Database] Migrating: Adding usage_pct column');
+        await database.execAsync('ALTER TABLE pokemon ADD COLUMN usage_pct REAL DEFAULT 0;');
+      }
+      if (!hasUsageRank) {
+        console.log('[Database] Migrating: Adding usage_rank column');
+        await database.execAsync('ALTER TABLE pokemon ADD COLUMN usage_rank INTEGER DEFAULT 0;');
+      }
     }
   } catch (e) {
     console.error('[Database] Migration error:', e);
   }
+
 
   // Migration for team_members: add team_order column
   try {
@@ -93,8 +107,8 @@ export const initDatabase = async () => {
   const statements = [
     `CREATE TABLE IF NOT EXISTS pokemon (
       id              INTEGER PRIMARY KEY AUTOINCREMENT,
-      dex_number      INTEGER NOT NULL,
-      name            TEXT NOT NULL,
+      dex_number      INTEGER NOT NULL DEFAULT 0,
+      name            TEXT NOT NULL UNIQUE,
       form            TEXT NOT NULL DEFAULT '',
       description     TEXT,
       is_mega         INTEGER DEFAULT 0,
@@ -111,8 +125,10 @@ export const initDatabase = async () => {
       sprite_shiny    TEXT,
       sprite_icon     TEXT,
       category        TEXT,
-      UNIQUE(dex_number, form)
+      usage_pct       REAL DEFAULT 0,
+      usage_rank      INTEGER DEFAULT 0
     );`,
+
     `CREATE TABLE IF NOT EXISTS pokemon_types (
       pokemon_id INTEGER NOT NULL REFERENCES pokemon(id),
       type_name  TEXT NOT NULL,
@@ -178,6 +194,26 @@ export const initDatabase = async () => {
       synced_at   TEXT DEFAULT (datetime('now')),
       UNIQUE(pokemon_id, category, name)
     );`,
+    `CREATE TABLE IF NOT EXISTS meta_teammates (
+      pokemon_name    TEXT NOT NULL,
+      teammate_name   TEXT NOT NULL,
+      usage_pct       REAL NOT NULL,
+      synced_at       TEXT DEFAULT (datetime('now')),
+      PRIMARY KEY (pokemon_name, teammate_name)
+    );`,
+    `CREATE TABLE IF NOT EXISTS featured_teams (
+      id              INTEGER PRIMARY KEY AUTOINCREMENT,
+      pokemon_name    TEXT NOT NULL,
+      player          TEXT,
+      record          TEXT,
+      event           TEXT,
+      team_members    TEXT NOT NULL,
+      focus_ability   TEXT,
+      focus_item      TEXT,
+      focus_moves     TEXT,
+      synced_at       TEXT DEFAULT (datetime('now'))
+    );`,
+
     `CREATE TABLE IF NOT EXISTS sync_metadata (
       key   TEXT PRIMARY KEY,
       value TEXT

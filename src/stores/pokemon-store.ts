@@ -35,9 +35,10 @@ export const usePokemonStore = create<PokemonState>((set, get) => ({
 
   loadPokemons: async () => {
     set({ isLoading: true });
-    const all = await PokemonDAO.getAll();
+    const all = await PokemonDAO.getAllByUsageRank();
     set({ pokemons: all, filteredPokemons: all, isLoading: false });
   },
+
 
   setSearch: (query: string) => {
     set((state) => ({ filters: { ...state.filters, search: query } }));

@@ -23,7 +23,10 @@ export interface Pokemon {
   spriteIcon: string;
   category: string;
   types: string[];
+  usagePct: number;
+  usageRank: number;
 }
+
 
 export interface Ability {
   id: number;

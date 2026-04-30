@@ -3,7 +3,7 @@ import { Pokemon, Stats, Item } from '../../models/pokemon';
 
 export class PokemonDAO {
   static async upsert(pokemon: Partial<Pokemon>) {
-    if (pokemon.dexNumber === undefined || !pokemon.name) return;
+    if (!pokemon.name) return;
     const db = await getDatabase();
     
     const stats = pokemon.stats || {
@@ -13,10 +13,11 @@ export class PokemonDAO {
     await db.runAsync(
       `INSERT INTO pokemon (
         dex_number, name, form, is_mega, hp, attack, defense, sp_attack, sp_defense, speed, total, 
-        height, weight, sprite_default, sprite_shiny, sprite_icon, category, description
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-      ON CONFLICT(dex_number, form) DO UPDATE SET
-        name = excluded.name,
+        height, weight, sprite_default, sprite_shiny, sprite_icon, category, description,
+        usage_pct, usage_rank
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      ON CONFLICT(name) DO UPDATE SET
+        dex_number = excluded.dex_number,
         is_mega = excluded.is_mega,
         hp = excluded.hp,
         attack = excluded.attack,
@@ -31,7 +32,10 @@ export class PokemonDAO {
         sprite_shiny = excluded.sprite_shiny,
         sprite_icon = excluded.sprite_icon,
         category = excluded.category,
-        description = excluded.description;`,
+        description = excluded.description,
+        usage_pct = excluded.usage_pct,
+        usage_rank = excluded.usage_rank;`,
+
       [
         pokemon.dexNumber ?? 0,
         pokemon.name ?? '',
@@ -50,14 +54,17 @@ export class PokemonDAO {
         pokemon.spriteShiny ?? '',
         pokemon.spriteIcon ?? '',
         pokemon.category ?? '',
-        pokemon.description ?? ''
+        pokemon.description ?? '',
+        pokemon.usagePct ?? 0,
+        pokemon.usageRank ?? 0,
       ]
     );
 
     const result = await db.getFirstAsync<{ id: number }>(
-      'SELECT id FROM pokemon WHERE dex_number = ? AND form = ?',
-      [pokemon.dexNumber, pokemon.form || '']
+      'SELECT id FROM pokemon WHERE name = ?',
+      [pokemon.name ?? '']
     );
+
 
     if (result && pokemon.types) {
       await this.setTypes(result.id, pokemon.types);
@@ -65,6 +72,7 @@ export class PokemonDAO {
 
     return result?.id;
   }
+
 
   static async setTypes(pokemonId: number, types: string[]) {
     const db = await getDatabase();
@@ -86,9 +94,27 @@ export class PokemonDAO {
       GROUP BY p.id
       ORDER BY p.dex_number ASC
     `);
-
     return rows.map(row => this.mapRowToPokemon(row));
   }
+
+  /**
+   * Returns all Pokémon ordered by usage rank (meta relevance).
+   * Pokémon with usage_rank = 0 fall to the bottom.
+   */
+  static async getAllByUsageRank(): Promise<Pokemon[]> {
+    const db = await getDatabase();
+    const rows = await db.getAllAsync<any>(`
+      SELECT p.*, GROUP_CONCAT(t.type_name) as types_list
+      FROM pokemon p
+      LEFT JOIN pokemon_types t ON p.id = t.pokemon_id
+      GROUP BY p.id
+      ORDER BY
+        CASE WHEN p.usage_rank = 0 THEN 1 ELSE 0 END ASC,
+        p.usage_rank ASC
+    `);
+    return rows.map(row => this.mapRowToPokemon(row));
+  }
+
 
   static async getById(id: number): Promise<Pokemon | null> {
     const db = await getDatabase();
@@ -142,8 +168,11 @@ export class PokemonDAO {
       spriteShiny: row.sprite_shiny,
       spriteIcon: row.sprite_icon,
       category: row.category,
+      usagePct: row.usage_pct ?? 0,
+      usageRank: row.usage_rank ?? 0,
     };
   }
+
 
   static async getByName(name: string): Promise<Pokemon | null> {
     const db = await getDatabase();

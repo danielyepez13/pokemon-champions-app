@@ -3,11 +3,12 @@ import { SyncOrchestrator, syncEvents } from '../services/sync-orchestrator';
 
 interface SyncState {
   status: 'idle' | 'syncing' | 'done' | 'error';
-  phase: 'serebii' | 'pokeapi' | null;
+  phase: 'items' | 'pokeapi' | 'pikalytics' | null;
   progress: { current: number; total: number };
   error: string | null;
   startSync: () => Promise<void>;
 }
+
 
 export const useSyncStore = create<SyncState>((set) => {
   // Listen to orchestrator events
