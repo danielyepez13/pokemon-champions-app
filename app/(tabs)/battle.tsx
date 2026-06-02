@@ -16,6 +16,7 @@ import { HeatmapMatrix } from "@/src/components/battle/HeatmapMatrix";
 import { TacticalAlerts } from "@/src/components/battle/TacticalAlerts";
 import { Pokemon } from "@/src/models/pokemon";
 import { useBattleStore } from "@/src/stores/battle-store";
+import { getTypeColor } from "@/src/utils/colors";
 import { resolvePokemonSprite } from "@/src/utils/team-sprite-resolver";
 
 // ─── Enemy Slot Component ─────────────────────────────────────────────────────
@@ -27,27 +28,6 @@ interface EnemySlotProps {
   onClear: (index: number) => void;
 }
 
-const TYPE_COLORS: Record<string, string> = {
-  fire: "#FF6B35",
-  water: "#4A9EDB",
-  grass: "#4CAF50",
-  electric: "#F9CA24",
-  ice: "#A8D8EA",
-  fighting: "#C0392B",
-  poison: "#8E44AD",
-  ground: "#D4AC0D",
-  flying: "#7FDBFF",
-  psychic: "#E91E8C",
-  bug: "#8BC34A",
-  rock: "#9E9E9E",
-  ghost: "#7B1FA2",
-  dragon: "#3F51B5",
-  dark: "#546E7A",
-  steel: "#78909C",
-  fairy: "#F48FB1",
-  normal: "#6D6D6D",
-};
-
 function EnemySlot({ index, pokemon, onPress, onClear }: EnemySlotProps) {
   const sprite = pokemon
     ? resolvePokemonSprite(
@@ -56,8 +36,10 @@ function EnemySlot({ index, pokemon, onPress, onClear }: EnemySlotProps) {
         pokemon.spriteDefault,
       )
     : null;
-  const primaryType = pokemon?.types[0]?.toLowerCase() ?? "";
-  const typeColor = TYPE_COLORS[primaryType] ?? "rgba(212,175,55,0.3)";
+  const primaryType = pokemon?.types[0] ?? "";
+  const typeColor = primaryType
+    ? getTypeColor(primaryType)
+    : "rgba(212,175,55,0.3)";
 
   return (
     <RNView style={styles.slotWrapper}>

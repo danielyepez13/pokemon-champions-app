@@ -25,9 +25,10 @@ Session state for Battle Preview: active team, enemy slots, and computed analysi
 ## Internal `recompute`
 
 1. `buildHeatmap` (sync)
-2. For each my×enemy pair with enemy set: `MetaUsageDAO.getTopItems` → Scarf check → `compareSpeed`
-3. `generateAlerts` (async)
-4. On error, logs and clears loading flag
+2. `MetaUsageDAO.getTopMetaForPokemonIds` once for all filled enemy slots
+3. For each my×enemy pair: Scarf check from cached items → `compareSpeed`
+4. `generateAlerts` with the same prefetched meta map (no per-enemy DB round-trips)
+5. On error, logs and clears loading flag
 
 ## Related files
 

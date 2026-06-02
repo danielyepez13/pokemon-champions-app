@@ -6,17 +6,22 @@
 
 ## Purpose
 
-App configuration: trigger full sync, clean sync, optional Pikalytics-only refresh, display last sync metadata.
+App configuration: trigger full sync, clean sync, Pikalytics-only meta refresh, display last sync metadata.
 
 ## Data
 
-- `useSyncStore.startSync`
-- Direct `SyncOrchestrator.cleanSync` / `syncPikalytics(force)` where wired
-- `SyncDAO.getMetadata` for last sync time
+- `useSyncStore.cleanSync`, `syncMeta`, `resetStatus`
+- Progress modal bound to `status === 'syncing'` from store
+- `SyncDAO.getMetadata` for last sync time (loaded locally on mount)
+
+## Sync UX
+
+Settings watches `status` transitions from `syncing` to show success/error alerts, then calls `resetStatus()` on dismiss.
 
 ## Related documentation
 
 - [sync-overview.md](../services/sync-overview.md)
+- [sync-store.md](../stores/sync-store.md)
 - [troubleshooting.md](../operations/troubleshooting.md)
 
 ## Related files

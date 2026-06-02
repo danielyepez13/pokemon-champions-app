@@ -9,7 +9,7 @@
 import { getMatchupScore, getMatchupLabel, MatchupLabel } from './type-chart';
 import { getMoveFlags, getAbilityFlags, MOVE_FLAG_ICONS, ABILITY_FLAG_ICONS } from './meta-flags';
 import { calcStat } from './stat-calculator';
-import { MetaUsageDAO } from '../database/dao/meta-usage.dao';
+import { MetaUsageDAO, PokemonTopMeta } from '../database/dao/meta-usage.dao';
 import { Pokemon } from '../models/pokemon';
 
 // ─── Constants ────────────────────────────────────────────────────
@@ -137,7 +137,8 @@ export interface TacticalAlert {
  */
 export async function generateAlerts(
   myTeam: (Pokemon & { moves?: string[]; ability?: string })[],
-  enemyTeam: (Pokemon | null)[]
+  enemyTeam: (Pokemon | null)[],
+  metaByPokemonId?: Map<number, PokemonTopMeta>
 ): Promise<TacticalAlert[]> {
   const alerts: TacticalAlert[] = [];
 
@@ -153,12 +154,14 @@ export async function generateAlerts(
   for (const enemy of enemyTeam) {
     if (!enemy) continue;
 
-    // Fetch meta usage from DB
-    const [topMoves, topAbilities, topItems] = await Promise.all([
-      MetaUsageDAO.getTopMoves(enemy.id),
-      MetaUsageDAO.getTopAbilities(enemy.id),
-      MetaUsageDAO.getTopItems(enemy.id),
-    ]);
+    const cached = metaByPokemonId?.get(enemy.id);
+    const [topMoves, topAbilities, topItems] = cached
+      ? [cached.moves, cached.abilities, cached.items]
+      : await Promise.all([
+          MetaUsageDAO.getTopMoves(enemy.id),
+          MetaUsageDAO.getTopAbilities(enemy.id),
+          MetaUsageDAO.getTopItems(enemy.id),
+        ]);
 
     // ── Anti-Intimidate Alert ──────────────────────────────────
     if (myIntimidators.length > 0) {

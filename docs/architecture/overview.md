@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Mobile competitive Pokémon (VGC / Champions format) assistant: local Pokédex, team import from Showdown paste, item catalog, battle preview analysis, and speed tier comparisons. All game data is offline-first in SQLite after sync.
+Mobile competitive Pokémon (VGC / Champions format) assistant: local Pokédex, team import from Showdown paste, battle preview analysis, and speed tier comparisons. All game data is offline-first in SQLite after sync.
 
 ## Stack
 
@@ -15,7 +15,6 @@ Mobile competitive Pokémon (VGC / Champions format) assistant: local Pokédex, 
 | Database | expo-sqlite | ~16.0.10 |
 | State | Zustand | ^5.0.12 |
 | HTTP | axios, axios-rate-limit | — |
-| HTML parsing | cheerio | Serebii scraper |
 | Events | eventemitter3 | Sync progress |
 | Images | expo-image | Sprites in UI |
 | Animation | react-native-reanimated, gesture-handler | — |
@@ -25,7 +24,7 @@ Mobile competitive Pokémon (VGC / Champions format) assistant: local Pokédex, 
 ```mermaid
 flowchart TB
   subgraph ui [app expo-router]
-    Tabs[Tabs: Pokedex Teams Battle SpeedTiers Items]
+    Tabs[Tabs: Pokedex Teams Battle SpeedTiers]
     Stacks[Stack: pokemon detail team-detail settings]
   end
   subgraph state [Zustand stores]

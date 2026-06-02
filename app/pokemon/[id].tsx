@@ -235,9 +235,18 @@ export default function PokemonDetailScreen() {
       if (!pkmn) return;
       setPokemon(pkmn);
 
-      // Load all Pokémon for sprite resolution in Featured Teams
-      const all = await PokemonDAO.getAllByUsageRank();
-      setAllPokemon(all);
+      const dbTeammates = await MetaTeammatesDAO.getByPokemon(pkmn.name);
+      const dbTeams = await FeaturedTeamsDAO.getByPokemon(pkmn.name);
+
+      const relatedNames = new Set<string>();
+      for (const t of dbTeammates) relatedNames.add(t.name);
+      for (const team of dbTeams) {
+        for (const name of team.pokemon) relatedNames.add(name);
+      }
+
+      const related = await PokemonDAO.getByNames([...relatedNames]);
+      setAllPokemon(related);
+      const byName = new Map(related.map(p => [p.name.toLowerCase(), p]));
 
       // Load meta usage from DB
       const dbMoves = await MetaUsageDAO.getByPokemonId(pkmn.id, 'move');
@@ -248,16 +257,11 @@ export default function PokemonDetailScreen() {
       setAbilities(dbAbilities);
       setItems(dbItems);
 
-      // Load teammates with their Pokémon record for sprite
-      const dbTeammates = await MetaTeammatesDAO.getByPokemon(pkmn.name);
       const teammatesWithPokemon = dbTeammates.map(t => ({
         ...t,
-        pokemon: all.find(p => p.name.toLowerCase() === t.name.toLowerCase()),
+        pokemon: byName.get(t.name.toLowerCase()),
       }));
       setTeammates(teammatesWithPokemon);
-
-      // Load featured teams
-      const dbTeams = await FeaturedTeamsDAO.getByPokemon(pkmn.name);
       setFeaturedTeams(dbTeams);
     } finally {
       setLoading(false);

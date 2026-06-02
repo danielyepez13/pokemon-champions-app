@@ -2,10 +2,9 @@ import { EventEmitter } from 'eventemitter3';
 import { META_SYNC_CONFIG } from '../config/constants';
 import { FeaturedTeamsDAO, MetaTeammatesDAO } from '../database/dao/meta-pokedex.dao';
 import { MetaUsageDAO } from '../database/dao/meta-usage.dao';
-import { ItemDAO, PokemonDAO } from '../database/dao/pokemon.dao';
+import { PokemonDAO } from '../database/dao/pokemon.dao';
 import { SyncDAO } from '../database/dao/sync.dao';
 import { resetDatabase } from '../database/database';
-import { CHAMPIONS_ITEMS_LIST } from '../utils/items-champions';
 import { downloadPikalyticsSpriteAsBase64 } from './image-downloader';
 import { PikalyticsService } from './pikalytics-service';
 import { PokeAPIService } from './pokeapi-service';
@@ -19,38 +18,16 @@ export class SyncOrchestrator {
     await this.startSync();
   }
 
-  private static getItemSprite(name: string): string {
-    return name.toLowerCase()
-      .replace(/ /g, '')
-      .replace(/-/g, '');
-  }
-
   static async startSync() {
     console.log('[Sync] Starting full synchronization (Pikalytics AI source)...');
     const syncId = await SyncDAO.logStart('full_sync');
     console.log(`[Sync] Logged start with ID: ${syncId}`);
 
     try {
-      // ─── Phase 1: Items ────────────────────────────────────────────────────
-      console.log('[Sync] Phase 1: Synchronizing Items...');
-      const totalItems = CHAMPIONS_ITEMS_LIST.length;
-      for (let i = 0; i < totalItems; i++) {
-        const item = CHAMPIONS_ITEMS_LIST[i];
-        syncEvents.emit('progress', { phase: 'items', current: i + 1, total: totalItems });
-        await ItemDAO.upsert({
-          name: item.name,
-          category: item.category,
-          effect: item.effect,
-          sprite_url: this.getItemSprite(item.name),
-          location: '',
-        });
-      }
-      console.log(`[Sync] Phase 1 complete: ${totalItems} items synchronized.`);
+      // ─── Pokédex from Pikalytics AI ───────────────────────────────────────
+      console.log('[Sync] Fetching Pokédex from Pikalytics AI index...');
 
-      // ─── Phase 2: Pokédex from Pikalytics AI ──────────────────────────────
-      console.log('[Sync] Phase 2: Fetching Pokédex from Pikalytics AI index...');
-
-      // 2a. Fetch the meta index to get the ranked list of Pokémon
+      // Fetch the meta index to get the ranked list of Pokémon
       const index = await PikalyticsService.fetchIndex();
       if (index.length === 0) {
         throw new Error('[Sync] Pikalytics AI index returned empty. Aborting Phase 2.');

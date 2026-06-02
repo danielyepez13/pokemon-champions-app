@@ -22,6 +22,7 @@ import { TeamDAO } from '@/src/database/dao/team.dao';
 import { resolvePokemonSprite, resolveItemSprite } from '@/src/utils/team-sprite-resolver';
 import { getNature } from '@/src/utils/natures';
 import { calcStat, DB_STAT_MAP, STAT_ORDER, STAT_LABELS } from '@/src/utils/stat-calculator';
+import { getTypeColor } from '@/src/utils/colors';
 
 // Enable LayoutAnimation on Android
 if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
@@ -32,19 +33,10 @@ if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental
 
 const MAX_EV = 32;
 
-const TYPE_COLORS: Record<string, string> = {
-    fire: '#FF6B35',     water: '#4A9EDB',    grass: '#4CAF50',
-    electric: '#F9CA24', ice: '#A8D8EA',      fighting: '#C0392B',
-    poison: '#8E44AD',   ground: '#D4AC0D',   flying: '#7FDBFF',
-    psychic: '#E91E8C',  bug: '#8BC34A',      rock: '#9E9E9E',
-    ghost: '#7B1FA2',    dragon: '#3F51B5',   dark: '#546E7A',
-    steel: '#78909C',    fairy: '#F48FB1',    normal: '#6D6D6D',
-};
-
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
 function TypePill({ type }: { type: string }) {
-    const color = TYPE_COLORS[type.toLowerCase()] ?? '#6D6D6D';
+    const color = getTypeColor(type);
     return (
         <RNView style={[styles.typePill, { backgroundColor: color + '30', borderColor: color + '80' }]}>
             <Text style={[styles.typePillText, { color }]}>{type.toUpperCase()}</Text>
@@ -130,8 +122,7 @@ export default function TeamDetailScreen() {
         const types: string[] = item.types_list
             ? item.types_list.split(',').filter(Boolean)
             : [];
-        const primaryType = types[0]?.toLowerCase() ?? '';
-        const typeColor = TYPE_COLORS[primaryType] ?? '#d4af37';
+        const typeColor = getTypeColor(types[0] ?? '');
 
         // --- Sprites ---
         const pokemonSprite = resolvePokemonSprite(item.dex_number, item.form ?? '', item.sprite_url);

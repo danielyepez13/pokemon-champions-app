@@ -129,10 +129,15 @@ export default function PokedexScreen() {
     loadPokemons();
   }, []);
 
+  useEffect(() => {
+    if (status === 'done') {
+      loadPokemons();
+    }
+  }, [status]);
+
   // Syncing state
   if (status === 'syncing') {
     const phaseLabels: Record<string, string> = {
-      items: 'Syncing items',
       pokeapi: 'Enriching data',
       pikalytics: 'Downloading meta',
     };

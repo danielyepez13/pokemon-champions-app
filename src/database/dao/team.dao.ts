@@ -80,43 +80,54 @@ export class TeamDAO {
     }
 
     static async updateMemberOrders(updates: { id: number; teamOrder: number }[]) {
+        if (updates.length === 0) return;
         const db = await getDatabase();
-        for (const { id, teamOrder } of updates) {
-            await db.runAsync(
-                'UPDATE team_members SET team_order = ? WHERE id = ?',
-                [teamOrder, id]
-            );
-        }
+        await db.withTransactionAsync(async () => {
+            for (const { id, teamOrder } of updates) {
+                await db.runAsync(
+                    'UPDATE team_members SET team_order = ? WHERE id = ?',
+                    [teamOrder, id]
+                );
+            }
+        });
     }
 
     static async getAllTeams(): Promise<Team[]> {
         const db = await getDatabase();
         const rows = await db.getAllAsync<any>('SELECT * FROM teams ORDER BY created_at DESC');
-        const teams: Team[] = [];
+        if (rows.length === 0) return [];
 
-        for (const row of rows) {
-            const previews = await db.getAllAsync<any>(
-                `SELECT p.dex_number, p.form, p.sprite_default as sprite_url
-                 FROM team_members tm
-                 JOIN pokemon p ON tm.pokemon_id = p.id
-                 WHERE tm.team_id = ?
-                 ORDER BY tm.team_order
-                 LIMIT 6`,
-                [row.id]
-            );
-            teams.push({
-                id: row.id,
-                name: row.name,
-                isActive: row.is_active === 1,
-                createdAt: row.created_at,
-                previews: previews.map(p => ({
+        const teamIds = rows.map(r => r.id);
+        const placeholders = teamIds.map(() => '?').join(',');
+        const previewRows = await db.getAllAsync<any>(
+            `SELECT tm.team_id, p.dex_number, p.form, p.sprite_default as sprite_url, tm.team_order
+             FROM team_members tm
+             JOIN pokemon p ON tm.pokemon_id = p.id
+             WHERE tm.team_id IN (${placeholders})
+             ORDER BY tm.team_id, tm.team_order`,
+            teamIds
+        );
+
+        const previewsByTeam = new Map<number, PreviewSprite[]>();
+        for (const p of previewRows) {
+            const list = previewsByTeam.get(p.team_id) ?? [];
+            if (list.length < 6) {
+                list.push({
                     dexNumber: p.dex_number,
                     form: p.form ?? '',
                     spriteUrl: p.sprite_url ?? null,
-                })),
-            });
+                });
+                previewsByTeam.set(p.team_id, list);
+            }
         }
-        return teams;
+
+        return rows.map(row => ({
+            id: row.id,
+            name: row.name,
+            isActive: row.is_active === 1,
+            createdAt: row.created_at,
+            previews: previewsByTeam.get(row.id) ?? [],
+        }));
     }
 
     static async getTeamWithMembers(teamId: number) {
@@ -150,15 +161,27 @@ export class TeamDAO {
             [teamId]
         );
 
-        for (const member of members) {
-            const moves = await db.getAllAsync<any>(
-                `SELECT m.name 
+        if (members.length > 0) {
+            const memberIds = members.map(m => m.id);
+            const movePlaceholders = memberIds.map(() => '?').join(',');
+            const moveRows = await db.getAllAsync<any>(
+                `SELECT mm.member_id, m.name
                  FROM member_moves mm
                  JOIN moves m ON mm.move_id = m.id
-                 WHERE mm.member_id = ?`,
-                [member.id]
+                 WHERE mm.member_id IN (${movePlaceholders})`,
+                memberIds
             );
-            member.moves = moves.map(m => m.name);
+
+            const movesByMember = new Map<number, string[]>();
+            for (const row of moveRows) {
+                const list = movesByMember.get(row.member_id) ?? [];
+                list.push(row.name);
+                movesByMember.set(row.member_id, list);
+            }
+
+            for (const member of members) {
+                member.moves = movesByMember.get(member.id) ?? [];
+            }
         }
 
         return {

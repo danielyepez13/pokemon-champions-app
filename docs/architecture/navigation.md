@@ -18,7 +18,6 @@ flowchart TD
   Tabs --> Teams[teams.tsx]
   Tabs --> Battle[battle.tsx]
   Tabs --> SpeedTiers[speed-tiers.tsx]
-  Tabs --> Items[items.tsx]
 ```
 
 ## Tab bar order
@@ -29,7 +28,6 @@ Defined in `app/(tabs)/_layout.tsx` (display order):
 2. **Teams** — `teams.tsx`, icon group
 3. **Battle** — `battle.tsx`, MaterialCommunityIcons pokeball
 4. **Speed Tiers** — `speed-tiers.tsx`, icon tachometer
-5. **Items** — `items.tsx`, icon briefcase
 
 Each tab header includes a **Settings** link (`/settings`) via `headerRight`.
 

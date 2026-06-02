@@ -9,6 +9,12 @@ export interface MetaUsageRow {
   syncedAt: string;
 }
 
+export interface PokemonTopMeta {
+  moves: MetaUsageRow[];
+  abilities: MetaUsageRow[];
+  items: MetaUsageRow[];
+}
+
 export class MetaUsageDAO {
   /**
    * Upsert a single meta usage entry.
@@ -105,6 +111,48 @@ export class MetaUsageDAO {
    */
   static async getTopItems(pokemonId: number, minUsage: number = 15): Promise<MetaUsageRow[]> {
     return this.getByPokemonId(pokemonId, 'item', minUsage);
+  }
+
+  /**
+   * Batch-fetch top meta usage for multiple Pokémon in one query.
+   */
+  static async getTopMetaForPokemonIds(
+    pokemonIds: number[],
+    minUsage: number = 15
+  ): Promise<Map<number, PokemonTopMeta>> {
+    const result = new Map<number, PokemonTopMeta>();
+    if (pokemonIds.length === 0) return result;
+
+    const uniqueIds = [...new Set(pokemonIds)];
+    const placeholders = uniqueIds.map(() => '?').join(',');
+    const db = await getDatabase();
+    const rows = await db.getAllAsync<any>(
+      `SELECT * FROM meta_usage
+       WHERE pokemon_id IN (${placeholders}) AND usage_pct >= ?
+       ORDER BY pokemon_id, category, usage_pct DESC`,
+      [...uniqueIds, minUsage]
+    );
+
+    for (const row of rows) {
+      const pokemonId = row.pokemon_id;
+      if (!result.has(pokemonId)) {
+        result.set(pokemonId, { moves: [], abilities: [], items: [] });
+      }
+      const entry: MetaUsageRow = {
+        id: row.id,
+        pokemonId: row.pokemon_id,
+        category: row.category,
+        name: row.name,
+        usagePct: row.usage_pct,
+        syncedAt: row.synced_at,
+      };
+      const bucket = result.get(pokemonId)!;
+      if (row.category === 'move') bucket.moves.push(entry);
+      else if (row.category === 'ability') bucket.abilities.push(entry);
+      else if (row.category === 'item') bucket.items.push(entry);
+    }
+
+    return result;
   }
 
   /**

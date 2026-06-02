@@ -14,7 +14,7 @@ expo-router file-based routes under `app/`. See [architecture/navigation.md](../
 
 ## Tab group (`app/(tabs)/_layout.tsx`)
 
-`Tabs` navigator with five screens — see individual screen docs.
+`Tabs` navigator with four screens — see individual screen docs.
 
 ## Stack screens (siblings to tabs)
 

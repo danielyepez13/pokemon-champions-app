@@ -1,7 +1,6 @@
 export const DB_NAME = 'champions_dex.db';
 
 export const POKEAPI_BASE_URL = 'https://pokeapi.co/api/v2';
-export const SEREBII_BASE_URL = 'https://www.serebii.net/pokemonchampions';
 export const PIKALYTICS_AI_BASE_URL = 'https://www.pikalytics.com/ai/pokedex/championstournaments';
 export const PIKALYTICS_AI_INDEX_URL = 'https://www.pikalytics.com/ai/pokedex/championstournaments';
 export const PIKALYTICS_CDN_BASE = 'https://cdn.pikalytics.com/images/championssprites';

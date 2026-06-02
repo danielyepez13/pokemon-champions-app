@@ -12,7 +12,8 @@ Show species stats, types, sprites, description, and Pikalytics meta usage (move
 
 - `PokemonDAO.getById`
 - `MetaUsageDAO` for competitive spreads
-- Optional links to teammates / featured teams from meta tables
+- `MetaTeammatesDAO` / `FeaturedTeamsDAO` for related meta
+- `PokemonDAO.getByNames` for teammate and featured-team sprite lookup (targeted batch, not full Pokédex load)
 
 ## Navigation
 

@@ -55,12 +55,17 @@ export const useBattleStore = create<BattleState>((set, get) => {
       // Heatmap (synchronous)
       const heatmap = buildHeatmap(myTeam, enemyTeam);
 
+      const enemyIds = enemyTeam
+        .filter((e): e is Pokemon => e !== null)
+        .map(e => e.id);
+      const metaByPokemonId = await MetaUsageDAO.getTopMetaForPokemonIds(enemyIds);
+
       // Speed comparisons — check Scarf usage in Pikalytics for each enemy
       const speedComparisons: SpeedComparison[] = [];
       for (const mine of myTeam) {
         for (const enemy of enemyTeam) {
           if (!enemy) continue;
-          const items = await MetaUsageDAO.getTopItems(enemy.id);
+          const items = metaByPokemonId.get(enemy.id)?.items ?? [];
           const hasScarfWarning = items.some(i =>
             i.name.toLowerCase().replace(/[\s']/g, '') === 'choicescarf'
           );
@@ -68,8 +73,8 @@ export const useBattleStore = create<BattleState>((set, get) => {
         }
       }
 
-      // Alerts (async — reads DB)
-      const alerts = await generateAlerts(myTeam, enemyTeam);
+      // Alerts (async — reads DB or uses prefetched meta)
+      const alerts = await generateAlerts(myTeam, enemyTeam, metaByPokemonId);
 
       set({ heatmap, speedComparisons, alerts, analysisLoading: false });
     } catch (e) {

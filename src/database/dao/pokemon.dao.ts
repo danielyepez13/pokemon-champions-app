@@ -1,5 +1,5 @@
 import { getDatabase } from '../database';
-import { Pokemon, Stats, Item } from '../../models/pokemon';
+import { Pokemon, Stats } from '../../models/pokemon';
 
 export class PokemonDAO {
   static async upsert(pokemon: Partial<Pokemon>) {
@@ -186,37 +186,21 @@ export class PokemonDAO {
 
     return rows.length > 0 ? this.mapRowToPokemon(rows[0]) : null;
   }
-}
 
-export class ItemDAO {
-  static async upsert(item: { name: string; category: string; effect: string; sprite_url?: string; location?: string }) {
+  static async getByNames(names: string[]): Promise<Pokemon[]> {
+    if (names.length === 0) return [];
+
+    const normalized = [...new Set(names.map(n => n.toLowerCase()))];
+    const placeholders = normalized.map(() => '?').join(',');
     const db = await getDatabase();
-    await db.runAsync(
-      `INSERT INTO items (name, category, effect, sprite_url, location)
-       VALUES (?, ?, ?, ?, ?)
-       ON CONFLICT(name) DO UPDATE SET
-         category = excluded.category,
-         effect = excluded.effect,
-         sprite_url = excluded.sprite_url,
-         location = excluded.location`,
-      [item.name, item.category, item.effect, item.sprite_url || null, item.location || null]
-    );
-  }
+    const rows = await db.getAllAsync<any>(`
+      SELECT p.*, GROUP_CONCAT(t.type_name) as types_list
+      FROM pokemon p
+      LEFT JOIN pokemon_types t ON p.id = t.pokemon_id
+      WHERE LOWER(p.name) IN (${placeholders})
+      GROUP BY p.id
+    `, normalized);
 
-  static async getAll(): Promise<Item[]> {
-    const db = await getDatabase();
-    const rows = await db.getAllAsync<any>('SELECT * FROM items ORDER BY category, name');
-    return rows.map(row => this.mapRowToItem(row));
-  }
-
-  private static mapRowToItem(row: any): Item {
-    return {
-      id: row.id,
-      name: row.name,
-      category: row.category,
-      effect: row.effect,
-      spriteUrl: row.sprite_url,
-      location: row.location,
-    };
+    return rows.map(row => this.mapRowToPokemon(row));
   }
 }

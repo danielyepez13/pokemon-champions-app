@@ -24,7 +24,6 @@ English module documentation for the Pokémon Champions competitive app. The age
 | `src/services/pikalytics-service.ts` | [services/pikalytics.md](services/pikalytics.md) |
 | `src/services/pokepaste-parser.ts` | [services/pokepaste-parser.md](services/pokepaste-parser.md) |
 | `src/services/team-service.ts` | [services/team-import.md](services/team-import.md) |
-| `src/services/serebii-scraper.ts` | [services/serebii-scraper.md](services/serebii-scraper.md) |
 | `src/services/image-downloader.ts` | [services/images.md](services/images.md) |
 | `src/utils/battle-analysis.ts` | [battle/battle-analysis.md](battle/battle-analysis.md) |
 | `src/utils/type-chart.ts` | [battle/type-chart.md](battle/type-chart.md) |

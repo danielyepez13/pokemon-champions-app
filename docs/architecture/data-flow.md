@@ -22,21 +22,17 @@ sequenceDiagram
 
 ```mermaid
 sequenceDiagram
-  participant UI as Settings / Items sync UI
+  participant UI as Settings / Pokedex sync UI
   participant Store as sync-store
   participant Orch as SyncOrchestrator
   participant Pika as PikalyticsService
   participant API as PokeAPIService
   participant DAO as PokemonDAO / MetaUsageDAO
-  UI->>Store: startSync()
-  Store->>Orch: startSync()
+  UI->>Store: startSync / cleanSync / syncMeta
+  Store->>Orch: orchestrator method
   Orch->>Orch: SyncDAO.logStart
-  loop Phase 1 items
-    Orch->>DAO: ItemDAO.upsert
-    Orch-->>Store: syncEvents progress items
-  end
   Orch->>Pika: fetchIndex
-  loop Phase 2 each Pokémon
+  loop Each Pokémon
     Orch->>Pika: fetchPokemonMeta
     Orch->>API: getPokemonDetail + species
     Orch->>Orch: downloadPikalyticsSpriteAsBase64
@@ -73,7 +69,7 @@ sequenceDiagram
 
 | Data | Storage |
 |------|---------|
-| Pokédex, items, meta usage | SQLite |
+| Pokédex, meta usage | SQLite |
 | User teams | SQLite |
 | Enemy team in battle | Zustand only (session) |
 | Sync progress | Zustand (ephemeral) |

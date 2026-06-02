@@ -21,6 +21,7 @@ import { Image } from 'expo-image';
 import { Pokemon } from '@/src/models/pokemon';
 import { PokemonDAO } from '@/src/database/dao/pokemon.dao';
 import { resolvePokemonSprite } from '@/src/utils/team-sprite-resolver';
+import { getTypeColor } from '@/src/utils/colors';
 
 interface Props {
   visible: boolean;
@@ -28,14 +29,6 @@ interface Props {
   onSelect: (pokemon: Pokemon) => void;
   onClose: () => void;
 }
-
-const TYPE_COLORS: Record<string, string> = {
-  fire: '#FF6B35', water: '#4A9EDB', grass: '#4CAF50', electric: '#F9CA24',
-  ice: '#A8D8EA', fighting: '#C0392B', poison: '#8E44AD', ground: '#D4AC0D',
-  flying: '#7FDBFF', psychic: '#E91E8C', bug: '#8BC34A', rock: '#9E9E9E',
-  ghost: '#7B1FA2', dragon: '#3F51B5', dark: '#546E7A', steel: '#78909C',
-  fairy: '#F48FB1', normal: '#6D6D6D',
-};
 
 export function EnemySelectionModal({ visible, slotIndex, onSelect, onClose }: Props) {
   const [query, setQuery] = useState('');
@@ -82,8 +75,8 @@ export function EnemySelectionModal({ visible, slotIndex, onSelect, onClose }: P
 
   const renderItem = useCallback(({ item }: { item: Pokemon }) => {
     const sprite = resolvePokemonSprite(item.dexNumber, item.form ?? '', item.spriteDefault);
-    const primaryType = item.types[0]?.toLowerCase() ?? 'normal';
-    const typeColor = TYPE_COLORS[primaryType] ?? '#6D6D6D';
+    const primaryType = item.types[0] ?? 'normal';
+    const typeColor = getTypeColor(primaryType);
 
     return (
       <Pressable
@@ -100,16 +93,19 @@ export function EnemySelectionModal({ visible, slotIndex, onSelect, onClose }: P
         <RNView style={styles.resultInfo}>
           <Text style={styles.resultName}>{item.name}</Text>
           <RNView style={styles.resultTypes}>
-            {item.types.map(t => (
+            {item.types.map(t => {
+              const color = getTypeColor(t);
+              return (
               <RNView
                 key={t}
-                style={[styles.typePill, { backgroundColor: (TYPE_COLORS[t.toLowerCase()] ?? '#6D6D6D') + '30' }]}
+                style={[styles.typePill, { backgroundColor: color + '30' }]}
               >
-                <Text style={[styles.typePillText, { color: TYPE_COLORS[t.toLowerCase()] ?? '#6D6D6D' }]}>
+                <Text style={[styles.typePillText, { color }]}>
                   {t.toUpperCase()}
                 </Text>
               </RNView>
-            ))}
+              );
+            })}
           </RNView>
         </RNView>
         <Text style={styles.dexNumber}>#{String(item.dexNumber).padStart(3, '0')}</Text>

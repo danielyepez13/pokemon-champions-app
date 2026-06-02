@@ -26,7 +26,7 @@ Assumes max investment for enemy:
 
 ## Alerts: `generateAlerts` (async)
 
-Reads `MetaUsageDAO` per enemy for top moves, abilities, items.
+Accepts optional `metaByPokemonId` map from `MetaUsageDAO.getTopMetaForPokemonIds`. When provided, skips per-enemy DB queries.
 
 ### Alert types
 

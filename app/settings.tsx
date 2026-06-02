@@ -1,47 +1,52 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { StyleSheet, Pressable, Alert, ActivityIndicator, ScrollView, Modal } from 'react-native';
 import { Text, View } from '@/components/Themed';
-import { SyncOrchestrator, syncEvents } from '@/src/services/sync-orchestrator';
+import { useSyncStore } from '@/src/stores/sync-store';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import Colors from '@/constants/Colors';
-import { useColorScheme } from '@/components/useColorScheme';
 import { Stack } from 'expo-router';
 
 export default function SettingsScreen() {
-  const [syncing, setSyncing] = useState(false);
-  const [syncProgress, setSyncProgress] = useState({ current: 0, total: 0, phase: '' });
   const [lastMetaSync, setLastMetaSync] = useState<string | null>(null);
-  const colorScheme = useColorScheme();
+  const prevStatus = useRef(useSyncStore.getState().status);
 
-  useEffect(() => {
-    const onProgress = (data: { current: number, total: number, phase: string }) => {
-      setSyncProgress(data);
-    };
-
-    const onComplete = () => {
-      setSyncing(false);
-      Alert.alert('Success', 'Database reset and synchronized correctly.');
-    };
-
-    const onError = (msg: string) => {
-      setSyncing(false);
-      Alert.alert('Error', `Error during synchronization: ${msg}`);
-    };
-
-    syncEvents.on('progress', onProgress);
-    syncEvents.on('complete', onComplete);
-    syncEvents.on('error', onError);
-
-    return () => {
-      syncEvents.off('progress', onProgress);
-      syncEvents.off('complete', onComplete);
-      syncEvents.off('error', onError);
-    };
-  }, []);
+  const {
+    status,
+    mode,
+    phase,
+    progress,
+    error,
+    cleanSync,
+    syncMeta,
+    resetStatus,
+  } = useSyncStore();
 
   useEffect(() => {
     loadLastMetaSync();
   }, []);
+
+  useEffect(() => {
+    const prev = prevStatus.current;
+    prevStatus.current = status;
+
+    if (prev === 'syncing' && status === 'done') {
+      if (mode === 'full') {
+        Alert.alert('Success', 'Database reset and synchronized correctly.', [
+          { text: 'OK', onPress: resetStatus },
+        ]);
+      } else if (mode === 'meta') {
+        loadLastMetaSync();
+        Alert.alert('Success', 'Meta data synchronized successfully.', [
+          { text: 'OK', onPress: resetStatus },
+        ]);
+      } else {
+        resetStatus();
+      }
+    } else if (prev === 'syncing' && status === 'error' && error) {
+      Alert.alert('Error', `Error during synchronization: ${error}`, [
+        { text: 'OK', onPress: resetStatus },
+      ]);
+    }
+  }, [status, mode, error, resetStatus]);
 
   const loadLastMetaSync = async () => {
     try {
@@ -59,18 +64,7 @@ export default function SettingsScreen() {
         { text: 'Cancel', style: 'cancel' },
         {
           text: 'Sync Now',
-          onPress: async () => {
-            setSyncing(true);
-            try {
-              await SyncOrchestrator.syncPikalytics(true);
-              await loadLastMetaSync();
-              setSyncing(false);
-              Alert.alert('Success', 'Meta data synchronized successfully.');
-            } catch (e: any) {
-              setSyncing(false);
-              Alert.alert('Error', `Error during meta sync: ${e.message}`);
-            }
-          }
+          onPress: () => syncMeta(true),
         },
       ]
     );
@@ -82,28 +76,27 @@ export default function SettingsScreen() {
       'This action will erase the entire local database and reload everything from scratch. Are you sure?',
       [
         { text: 'Cancel', style: 'cancel' },
-        { 
-          text: 'Reset and Sync', 
+        {
+          text: 'Reset and Sync',
           style: 'destructive',
-          onPress: async () => {
-            setSyncing(true);
-            SyncOrchestrator.cleanSync();
-          }
+          onPress: () => cleanSync(),
         },
       ]
     );
   };
 
+  const syncing = status === 'syncing';
+
   return (
     <View style={styles.container}>
       <Stack.Screen options={{ title: 'Settings' }} />
-      
+
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Data & Storage</Text>
-          
-          <Pressable 
-            style={({ pressed }) => [styles.option, pressed && styles.optionPressed]} 
+
+          <Pressable
+            style={({ pressed }) => [styles.option, pressed && styles.optionPressed]}
             onPress={handleFullReset}
           >
             <View style={styles.optionIcon}>
@@ -112,7 +105,7 @@ export default function SettingsScreen() {
             <View style={styles.optionContent}>
               <Text style={styles.optionTitle}>Clear & Sync Everything</Text>
               <Text style={styles.optionDescription}>
-                Deletes the current database and downloads everything again (Pokemon and Items).
+                Deletes cached Pokédex and meta data, then re-downloads from Pikalytics and PokeAPI.
               </Text>
             </View>
             <FontAwesome name="chevron-right" size={14} color="#9ca3af" />
@@ -120,8 +113,8 @@ export default function SettingsScreen() {
 
           <View style={styles.divider} />
 
-          <Pressable 
-            style={({ pressed }) => [styles.option, pressed && styles.optionPressed]} 
+          <Pressable
+            style={({ pressed }) => [styles.option, pressed && styles.optionPressed]}
             onPress={handleMetaSync}
           >
             <View style={[styles.optionIcon, styles.optionIconMeta]}>
@@ -167,23 +160,20 @@ export default function SettingsScreen() {
           <View style={styles.modalContent}>
             <ActivityIndicator size="large" color="#d4af37" />
             <Text style={styles.syncTitle}>
-              {syncProgress.phase === 'pikalytics'
+              {phase === 'pikalytics'
                 ? 'Synchronizing Meta Data...'
-                : syncProgress.phase === 'items'
-                  ? 'Synchronizing Items...'
-                  : 'Synchronizing Pokemon...'}
+                : 'Synchronizing Pokemon...'}
             </Text>
-            {syncProgress.total > 0 && (
+            {progress.total > 0 && (
               <Text style={styles.syncSubtitle}>
-                {syncProgress.phase === 'pikalytics'
+                {phase === 'pikalytics'
                   ? 'Fetching Pikalytics data:'
-                  : syncProgress.phase === 'items'
-                    ? 'Processing item:'
-                    : 'Processing Pokemon:'} {syncProgress.current} / {syncProgress.total}
+                  : 'Processing Pokemon:'}{' '}
+                {progress.current} / {progress.total}
               </Text>
             )}
             <Text style={styles.syncWaitText}>
-              {syncProgress.phase === 'pikalytics'
+              {phase === 'pikalytics'
                 ? 'Downloading competitive usage data...'
                 : 'Deleting database and rebuilding...'}
             </Text>
@@ -349,6 +339,5 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
     textAlign: 'center',
     lineHeight: 20,
-  }
+  },
 });
-

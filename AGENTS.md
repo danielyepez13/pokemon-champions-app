@@ -1,6 +1,6 @@
 # AGENTS.md — Pokémon Champions App
 
-Mobile **React Native + Expo** app for competitive Pokémon (VGC / Champions): offline Pokédex, team import from Showdown paste, item catalog, battle preview, and speed tiers. Data lives in **SQLite**; sync uses **Pikalytics AI** (index + meta) enriched with **PokeAPI**. Module details are in [`docs/`](docs/) — do not duplicate long specs here.
+Mobile **React Native + Expo** app for competitive Pokémon (VGC / Champions): offline Pokédex, team import from Showdown paste, battle preview, and speed tiers. Data lives in **SQLite**; sync uses **Pikalytics AI** (index + meta) enriched with **PokeAPI**. Module details are in [`docs/`](docs/) — do not duplicate long specs here.
 
 ## Stack
 
@@ -8,7 +8,7 @@ Mobile **React Native + Expo** app for competitive Pokémon (VGC / Champions): o
 - **expo-router** ~6.0.23 · **TypeScript** ~5.9.2
 - **expo-sqlite** ~16.0.10 (FTS5 when supported)
 - **Zustand** ^5.0.12 · **axios** + **axios-rate-limit**
-- **cheerio** (Serebii) · **reanimated** / **gesture-handler** · **expo-image**
+- **axios** + **axios-rate-limit** · **reanimated** / **gesture-handler** · **expo-image**
 
 ## Documentation
 
@@ -30,7 +30,6 @@ Full index and code→doc mapping: [`docs/README.md`](docs/README.md).
 - [Routing](docs/app/routing.md)
 - [Pokedex screen](docs/app/screens-pokedex.md)
 - [Teams screen](docs/app/screens-teams.md)
-- [Items screen](docs/app/screens-items.md)
 - [Battle screen](docs/app/screens-battle.md)
 - [Speed Tiers screen](docs/app/screens-speed-tiers.md)
 - [Pokémon detail](docs/app/screen-pokemon-detail.md)
@@ -46,13 +45,11 @@ Full index and code→doc mapping: [`docs/README.md`](docs/README.md).
 ### Services
 
 - [Sync overview](docs/services/sync-overview.md)
-- [Sync phase: items](docs/services/sync-phase-items.md)
 - [Sync phase: Pokédex](docs/services/sync-phase-pokedex.md)
 - [PokeAPI](docs/services/pokeapi.md)
 - [Pikalytics](docs/services/pikalytics.md)
 - [Pokepaste parser](docs/services/pokepaste-parser.md)
 - [Team import](docs/services/team-import.md)
-- [Serebii scraper](docs/services/serebii-scraper.md)
 - [Images](docs/services/images.md)
 
 ### Battle engine

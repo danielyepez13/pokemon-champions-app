@@ -113,27 +113,6 @@ export default function TabLayout() {
           ),
         }}
       />
-      <Tabs.Screen
-        name="items"
-        options={{
-          title: 'Items',
-          tabBarIcon: ({ color }) => <TabBarIcon name="briefcase" color={color} />,
-          headerRight: () => (
-            <Link href="/settings" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="cog"
-                    size={22}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
-        }}
-      />
     </Tabs>
   );
 }

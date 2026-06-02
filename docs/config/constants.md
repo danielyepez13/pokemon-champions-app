@@ -15,7 +15,6 @@ Central URLs and sync thresholds in `src/config/constants.ts`.
 | Constant | Purpose |
 |----------|---------|
 | `POKEAPI_BASE_URL` | PokeAPI v2 root |
-| `SEREBII_BASE_URL` | Serebii Champions pages |
 | `PIKALYTICS_AI_BASE_URL` | Pikalytics AI pokedex |
 | `PIKALYTICS_AI_INDEX_URL` | Meta index (same path as base) |
 | `PIKALYTICS_CDN_BASE` | Sprite CDN |
