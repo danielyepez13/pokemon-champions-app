@@ -1,0 +1,33 @@
+---
+description: Require updating module docs when code changes
+alwaysApply: true
+---
+
+# Documentation sync
+
+When you change application code, finish by updating documentation — do not leave docs stale.
+
+## Before completing a task
+
+1. Open [`docs/README.md`](docs/README.md) and find the row for every path you edited under `app/` or `src/`.
+2. Update each linked doc: purpose, behavior, data flow, edge cases, mermaid diagrams if the flow changed, and **Related files**.
+3. If the change affects agent navigation, add or adjust links in [`AGENTS.md`](AGENTS.md).
+4. Keep [`AGENTS.md`](AGENTS.md) as a short index only — move detail into `docs/`, not into AGENTS.md body.
+
+## New modules
+
+- Add doc file(s) under the matching `docs/<module>/` folder.
+- Add a row to the code→doc table in `docs/README.md`.
+- Add link(s) under the correct section in `AGENTS.md`.
+
+## Exceptions
+
+- Typo-only or comment-only edits with **no** behavior change: no doc update; mention "no doc update required" in your summary.
+- All other changes (logic, API, schema, UI behavior, config): update docs **at the end** of the task.
+
+## Checklist
+
+- [ ] Mapped edited paths via `docs/README.md`
+- [ ] Updated all affected `docs/**/*.md` files
+- [ ] Updated `AGENTS.md` links if structure changed
+- [ ] Set or refreshed "Last verified against code" date where you edited a doc
