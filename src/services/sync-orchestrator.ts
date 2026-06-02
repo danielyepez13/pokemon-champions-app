@@ -65,6 +65,12 @@ export class SyncOrchestrator {
 
       let ok = 0;
       let errors = 0;
+      let spritesOk = 0;
+      let spritesResolvedViaFallback = 0;
+      let spritesFailed = 0;
+      let speciesOk = 0;
+      let speciesResolvedViaFallback = 0;
+      let speciesFailed = 0;
 
       for (let i = 0; i < index.length; i++) {
         const entry = index[i];
@@ -82,13 +88,23 @@ export class SyncOrchestrator {
           // 2b-ii. Fetch base data from PokeAPI using the Pikalytics name (lowercased)
           const pokeApiName = entry.name.toLowerCase();
           const detail = await PokeAPIService.getPokemonDetail(pokeApiName, undefined);
-          const species = detail
-            ? await PokeAPIService.getPokemonSpecies(detail.id)
-            : null;
+          const speciesResult = detail
+            ? await PokeAPIService.getPokemonSpeciesForDetail(detail, entry.name)
+            : await PokeAPIService.getPokemonSpeciesByName(entry.name);
+
+          if (speciesResult.species) {
+            if (speciesResult.resolvedViaFallback) {
+              speciesResolvedViaFallback++;
+            } else {
+              speciesOk++;
+            }
+          } else {
+            speciesFailed++;
+          }
 
           let description = '';
-          if (species) {
-            const flavor = species.flavor_text_entries?.find(
+          if (speciesResult.species) {
+            const flavor = speciesResult.species.flavor_text_entries?.find(
               (e: any) => e.language.name === 'es' || e.language.name === 'en'
             );
             description = flavor
@@ -97,7 +113,17 @@ export class SyncOrchestrator {
           }
 
           // 2b-iii. Download sprite from Pikalytics CDN as Base64 (offline support)
-          const spriteBase64 = await downloadPikalyticsSpriteAsBase64(entry.name);
+          const spriteResult = await downloadPikalyticsSpriteAsBase64(entry.name);
+          const spriteBase64 = spriteResult.sprite;
+          if (spriteBase64) {
+            if (spriteResult.usedFallback) {
+              spritesResolvedViaFallback++;
+            } else {
+              spritesOk++;
+            }
+          } else {
+            spritesFailed++;
+          }
 
           // Use base stats from Pikalytics if PokeAPI fails, else from PokeAPI
           const stats = detail
@@ -179,6 +205,9 @@ export class SyncOrchestrator {
       }
 
       console.log(`[Sync] Phase 2 complete. Success: ${ok}, Errors: ${errors}, Total: ${index.length}`);
+      console.log(
+        `[Sync] Phase 2 enrichment summary: sprites OK=${spritesOk} fallback=${spritesResolvedViaFallback} failed=${spritesFailed} | species OK=${speciesOk} fallback=${speciesResolvedViaFallback} failed=${speciesFailed}`
+      );
 
       // Save sync timestamps
       await SyncDAO.setMetadata('pikalytics_last_sync', new Date().toISOString());
@@ -291,15 +320,20 @@ export class SyncOrchestrator {
 
       const meta = await PikalyticsService.fetchPokemonMeta(displayName);
       const detail = await PokeAPIService.getPokemonDetail(slug, undefined);
-      const species = detail ? await PokeAPIService.getPokemonSpecies(detail.id) : null;
+      const speciesResult = detail
+        ? await PokeAPIService.getPokemonSpeciesForDetail(detail, displayName)
+        : await PokeAPIService.getPokemonSpeciesByName(displayName);
 
       let description = '';
-      if (species) {
-        const flavor = species.flavor_text_entries?.find((e: any) => e.language.name === 'en');
+      if (speciesResult.species) {
+        const flavor = speciesResult.species.flavor_text_entries?.find(
+          (e: any) => e.language.name === 'en'
+        );
         description = flavor ? flavor.flavor_text.replace(/\n|\f/g, ' ') : '';
       }
 
-      const spriteBase64 = await downloadPikalyticsSpriteAsBase64(displayName);
+      const spriteResult = await downloadPikalyticsSpriteAsBase64(displayName);
+      const spriteBase64 = spriteResult.sprite;
 
       const stats = detail
         ? {
